@@ -68,57 +68,7 @@
     backgroudImageView.frame = self.tableView.frame;
     self.tableView.backgroundView = backgroudImageView;
     
-////Allocating the Arrays for parsing
-//    arrayOfChapter = [[NSMutableArray alloc] init];
-//    arrayOfVerses = [[NSMutableArray alloc] init];
-//    
-////Deleteing space in between key words
-//    NSMutableString *mutableSearchQuery = [_searchQuery mutableCopy];
-//    
-//    while (1)
-//    {
-//        NSRange rangeForReplaceing = [mutableSearchQuery rangeOfString:@" "];
-//        
-//        if (rangeForReplaceing.location != NSNotFound)
-//        {
-//            [mutableSearchQuery replaceCharactersInRange:rangeForReplaceing withString:@"_"];
-//        }else
-//            break;
-//    }
-//    
-//    NSString *URLString = [NSString stringWithFormat:@"http://www.openbible.info/topics/%@", mutableSearchQuery];
-//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
-//    
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        dataForParsing = (NSData *)responseObject;
-//        mutableString = [[NSMutableString alloc] initWithData:dataForParsing encoding:(NSUTF8StringEncoding)];
-//        
-//        ParserOfHTML *parser = [[ParserOfHTML alloc] init];
-//        NSDictionary *dictionaryOfAllResults = [parser parseHTMLstring:mutableString];
-//        
-//        arrayOfVerses = dictionaryOfAllResults[@"verses"];
-//        arrayOfChapter = dictionaryOfAllResults[@"chapters"];
-//        [self.tableView reloadData];
-//        
-//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//        
-//        [self hideActivityIndicatorView];
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-//     {
-//         [self hideActivityIndicatorView];
-//         UIAlertView *alertForNoNetwork = [[UIAlertView alloc] initWithTitle:@"No Internet Connectivity"  message:@"There is no internet connectvity. Please connect to internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//         [alertForNoNetwork show];
-//         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//     }];
-//    
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-//    
-//    [self showActitviyIndicatorView];
-//    
-//    [operation start];
+
     
     [self getSearchResults];
 }

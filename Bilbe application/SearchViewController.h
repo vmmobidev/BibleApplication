@@ -17,7 +17,7 @@
 
 
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : UIViewController < UITextFieldDelegate >
 @property (weak, nonatomic) IBOutlet UITextField *textFieldForSearching;
 @property (weak, nonatomic) IBOutlet UITextView *VOTDTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
