@@ -251,7 +251,9 @@
     {
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        _textFieldForSearching.text =@"  Ask somethig here...";
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+            _textFieldForSearching.text =@"  Ask somethig here...";
+        } completion:Nil];
         return NO;
     }else if ([_textFieldForSearching.text isEqualToString:@"  Ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
     {
@@ -260,7 +262,13 @@
     {
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        _textFieldForSearching.text =@"  Please ask something meaningful...";
+        
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+            _textFieldForSearching.text =@"  Please ask something meaningful...";
+
+        } completion:Nil];
+//        _textFieldForSearching.text =@"  Please ask something meaningful...";
+        
         return NO;
     }
     
@@ -289,13 +297,18 @@
     {
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        _textFieldForSearching.text =@"  Ask somethig here...";
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+            _textFieldForSearching.text =@"  Ask somethig here...";
+        } completion:Nil];
 
     }else if (stringToBeSent.length == 0)
     {
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        _textFieldForSearching.text =@"  Please ask something meaningful...";
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+            _textFieldForSearching.text =@"  Please ask something meaningful...";
+            
+        } completion:Nil];
     }else
     {
         [self performSegueWithIdentifier:@"searchID" sender:self];
@@ -324,7 +337,11 @@
     {
         _textFieldForSearching.textColor = [UIColor blackColor];
         _textFieldForSearching.font = fontForTxtFldWhileEditing;
-        _textFieldForSearching.text = @"";
+        
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+            _textFieldForSearching.text = @"";
+            
+        } completion:Nil];
     }
 }
 

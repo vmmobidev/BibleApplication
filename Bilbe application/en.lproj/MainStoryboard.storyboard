@@ -22,7 +22,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="VvZ-PA-lan">
+                                        <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="VvZ-PA-lan">
                                             <rect key="frame" x="8" y="0.0" width="307" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -82,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pageView.png" translatesAutoresizingMaskIntoConstraints="NO" id="NWJ-ef-vjl">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pageView.png" translatesAutoresizingMaskIntoConstraints="NO" id="NWJ-ef-vjl">
                                 <rect key="frame" x="10" y="75" width="300" height="466"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -211,7 +211,7 @@
                                     <action selector="returnKeyPressed:" destination="5hP-3R-fM6" eventType="editingDidEndOnExit" id="KaG-xc-Ulg"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scripts.png" translatesAutoresizingMaskIntoConstraints="NO" id="J69-Ih-qgW">
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scripts.png" translatesAutoresizingMaskIntoConstraints="NO" id="J69-Ih-qgW">
                                 <rect key="frame" x="0.0" y="259" width="320" height="252"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -248,7 +248,7 @@
                                 <rect key="frame" x="150" y="352" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFx-5X-P0y">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFx-5X-P0y">
                                 <rect key="frame" x="44" y="114" width="232" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>

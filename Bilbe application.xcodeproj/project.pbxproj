@@ -66,6 +66,7 @@
 		E4D426A6183C683400B29596 /* ResultsListedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D426A5183C683400B29596 /* ResultsListedViewController.m */; };
 		E4D426AB183CB65300B29596 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D426AA183CB65300B29596 /* SearchViewController.m */; };
 		E4D426AE183CBABE00B29596 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D426AD183CBABE00B29596 /* DetailViewController.m */; };
+		E4D46E8B18697D8400F12B63 /* transperentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D46E8A18697D8400F12B63 /* transperentButton.png */; };
 		E4D5D5D91861731E004DBE2E /* BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5D5D81861731E004DBE2E /* BackButton.m */; };
 		E4D5D5DB1861732E004DBE2E /* BackButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D5D5DA1861732E004DBE2E /* BackButton.xib */; };
 		E4E38DF8186312E100CD85B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E38DF7186312E100CD85B6 /* Reachability.m */; };
@@ -170,6 +171,7 @@
 		E4D426AA183CB65300B29596 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		E4D426AC183CBABE00B29596 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		E4D426AD183CBABE00B29596 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		E4D46E8A18697D8400F12B63 /* transperentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transperentButton.png; sourceTree = "<group>"; };
 		E4D5D5D71861731E004DBE2E /* BackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButton.h; sourceTree = "<group>"; };
 		E4D5D5D81861731E004DBE2E /* BackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButton.m; sourceTree = "<group>"; };
 		E4D5D5DA1861732E004DBE2E /* BackButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackButton.xib; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				E4477CE418685D130004799F /* scroll animation */,
 				E4477D13186860D70004799F /* btshareall.png */,
 				E4477D14186860D70004799F /* btshareall@2x.png */,
+				E4D46E8A18697D8400F12B63 /* transperentButton.png */,
 				E4477D17186866020004799F /* searchButton.png */,
 				E4E38E211863244900CD85B6 /* ArrowForScrollDown.png */,
 				E4E38E221863244900CD85B6 /* ArrowForScrollDown@2x.png */,
@@ -496,6 +499,7 @@
 				E4477CFC18685D130004799F /* 1.1@2x.png in Resources */,
 				E4E38E3E1863244900CD85B6 /* bar-button.png in Resources */,
 				E4477D0E18685D130004799F /* 7.1@2x.png in Resources */,
+				E4D46E8B18697D8400F12B63 /* transperentButton.png in Resources */,
 				E4AB7AC51861832D00655F99 /* James_Fajardo.ttf in Resources */,
 				E4E38E3B1863244900CD85B6 /* back-button@2x.png in Resources */,
 				E4D4268C183C67DA00B29596 /* InfoPlist.strings in Resources */,

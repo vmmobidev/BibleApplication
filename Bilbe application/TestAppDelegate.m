@@ -9,6 +9,10 @@
 #import "TestAppDelegate.h"
 #import "Reachability.h"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @implementation TestAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -36,15 +40,29 @@
     shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
     shadow.shadowOffset = CGSizeMake(2, 5);
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                           NSShadowAttributeName:shadow ,
-                                                           NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+    UIImage *barButtonImage = [[UIImage imageNamed:@"transperentButton.png"] resizableImageWithCapInsets:(UIEdgeInsetsMake(0, 0, 0, 0))];
+    [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:(UIControlStateNormal) barMetrics:(UIBarMetricsDefault)];
     
-    
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                           NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
-    
-    
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+        [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor:[UIColor whiteColor],
+                                                               UITextAttributeTextShadowOffset:[NSValue valueWithCGSize:shadow.shadowOffset],
+                                                               UITextAttributeTextShadowColor:shadow.shadowColor,
+                                                               UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+        
+        
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor],
+                                                               UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
+    } else
+    {
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                               NSShadowAttributeName:shadow ,
+                                                               NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+        
+        
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                               NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

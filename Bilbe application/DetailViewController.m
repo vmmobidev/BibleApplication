@@ -9,6 +9,10 @@
 #import "DetailViewController.h"
 #import "BackButton.h"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface DetailViewController ()
 @property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressForScollDown;
 
@@ -122,7 +126,47 @@
     UIActivityViewController *activityView =[[UIActivityViewController alloc]initWithActivityItems:dataToShare applicationActivities:Nil];
     activityView.excludedActivityTypes = @[UIActivityTypePrint,UIActivityTypeCopyToPasteboard];
     
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+        [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor:[UIColor whiteColor],
+                                                               UITextAttributeFont: [UIFont fontWithName:@"Arial" size:15]}];
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor],
+                                                               UITextAttributeFont: [UIFont fontWithName:@"Arial" size:15]} forState:(UIControlStateNormal)];
+    } else
+    {
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                               NSFontAttributeName: [UIFont fontWithName:@"Arial" size:15]}];
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                               NSFontAttributeName: [UIFont fontWithName:@"Arial" size:15]} forState:(UIControlStateNormal)];
+    }
+    
     [activityView setCompletionHandler:^(NSString *activityType, BOOL completed) {
+        NSShadow *shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+        shadow.shadowOffset = CGSizeMake(2, 5);
+        
+        
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        {
+            [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor:[UIColor whiteColor],
+                                                                   UITextAttributeTextShadowOffset:[NSValue valueWithCGSize:shadow.shadowOffset],
+                                                                   UITextAttributeTextShadowColor:shadow.shadowColor,
+                                                                   UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+            
+            
+            [[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor],
+                                                                   UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
+        } else
+        {
+            [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                   NSShadowAttributeName:shadow ,
+                                                                   NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+            
+            
+            [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                   NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
+        }
+        
         if (completed) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Posted" message:@"Verses is sent sucessfully" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [alert show];
@@ -133,10 +177,11 @@
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Unable To Share" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [alert show];
-
+            
         }
         
     }];
+    
      [self presentViewController:activityView animated:TRUE completion:nil];
 }
 
