@@ -116,8 +116,8 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          [self hideActivityIndicatorView];
-         UIAlertView *alertForNoNetwork = [[UIAlertView alloc] initWithTitle:@"No Internet Connectivity"  message:@"There is no internet connectvity. Please connect to internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-         [alertForNoNetwork show];
+//         UIAlertView *alertForNoNetwork = [[UIAlertView alloc] initWithTitle:@"No Internet Connectivity"  message:@"There is no internet connectvity. Please connect to internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//         [alertForNoNetwork show];
          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
      }];
     
@@ -130,13 +130,15 @@
 
 - (void)reachabilityChanged:(NSNotification *)notification
 {
+    NSLog(@"ResultViewController reachability");
+    
     Reachability *reach = [notification object];
     NetworkStatus status = [reach currentReachabilityStatus];
     
     if (status == NotReachable)
     {
-        UIAlertView *alertForNoNetwork = [[UIAlertView alloc] initWithTitle:@"No Internet Connectivity"  message:@"There is no internet connectvity. Please connect to internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alertForNoNetwork show];
+//        UIAlertView *alertForNoNetwork = [[UIAlertView alloc] initWithTitle:@"No Internet Connectivity"  message:@"There is no internet connectvity. Please connect to internet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alertForNoNetwork show];
     }
 }
 

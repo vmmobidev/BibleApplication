@@ -10,7 +10,8 @@
 #import "ResultsListedViewController.h"
 #import "AFNetworking.h"
 #import "Reachability.h"
-#define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=json"]
+#import "ParseVOTD.h"
+#define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=xml"]
 
 @interface SearchViewController ()
 
@@ -61,9 +62,8 @@
     
     _serachButton.titleLabel.shadowOffset = CGSizeMake(2, 3);
     
-    [_serachButton setBackgroundImage:[UIImage imageNamed:@"searchButton.png"] forState:UIControlStateNormal];
+//    [_serachButton setBackgroundImage:[UIImage imageNamed:@"searchButton.png"] forState:UIControlStateNormal];
     
-    _serachButton.adjustsImageWhenHighlighted = NO;
     
     if ([UIScreen mainScreen].bounds.size.height == 568)
     {
@@ -151,46 +151,50 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSData *data = (NSData *)responseObject;
-        NSError *error = nil;
-        NSArray *parsedOutput = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         
-        if (error)
-        {
-            NSLog(@"%@: %@",error, [error userInfo]);
+        ParseVOTD *parserForVODT = [[ParseVOTD alloc] init];
+        NSDictionary *dictionaryOfVerse = [parserForVODT getVOTDForData:data];
+//        
+//        NSError *error = nil;
+//        NSArray *parsedOutput = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+//        
+//        if (error)
+//        {
+//            NSLog(@"%@: %@",error, [error userInfo]);
+//            
+//        } else
+//        {
+//            NSDictionary *dictonaryFromJson = parsedOutput[0];
+//            NSString *chapther = [NSString stringWithFormat:@"%@ %@:%@", dictonaryFromJson[@"bookname"], dictonaryFromJson[@"chapter"], dictonaryFromJson[@"verse"]];
+//            
+//            
+//            NSMutableString *verseOfTheDay = [dictonaryFromJson[@"text"] mutableCopy];
+//            
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"<b>"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
+//            
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"</b>"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
+        
             
-        } else
-        {
-            NSDictionary *dictonaryFromJson = parsedOutput[0];
-            NSString *chapther = [NSString stringWithFormat:@"%@ %@:%@", dictonaryFromJson[@"bookname"], dictonaryFromJson[@"chapter"], dictonaryFromJson[@"verse"]];
-            
-            
-            NSMutableString *verseOfTheDay = [dictonaryFromJson[@"text"] mutableCopy];
-            
-            while (1)
-            {
-                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"<b>"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
-            
-            while (1)
-            {
-                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"</b>"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
-            
-            
-            _verseOfTheDay.chapter = chapther;
-            _verseOfTheDay.verse = verseOfTheDay;
+            _verseOfTheDay.chapter = dictionaryOfVerse[@"chapter"];
+            _verseOfTheDay.verse = dictionaryOfVerse[@"verse"];
             
             _activityIndicator.hidden = YES;
             
@@ -212,7 +216,7 @@
             
             _VOTDTextView.attributedText = attributeStrForChapters;
 
-        }
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -251,7 +255,7 @@
     {
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionBeginFromCurrentState) animations:^{
             _textFieldForSearching.text =@"  Ask somethig here...";
         } completion:Nil];
         return NO;
@@ -263,7 +267,7 @@
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
         
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionAllowAnimatedContent) animations:^{
             _textFieldForSearching.text =@"  Please ask something meaningful...";
 
         } completion:Nil];

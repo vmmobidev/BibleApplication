@@ -255,10 +255,13 @@
                                     <constraint firstAttribute="height" constant="37" id="NuB-9t-wEu"/>
                                     <constraint firstAttribute="width" constant="232" id="zet-dS-tp4"/>
                                 </constraints>
-                                <state key="normal" title="TELL ME ABOUT IT">
+                                <state key="normal" title="TELL ME ABOUT IT" backgroundImage="searchButton.png">
                                     <color key="titleColor" red="0.97341358418367352" green="0.94899698886134087" blue="0.95725588772271708" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.2071707589285714" green="0.2071707589285714" blue="0.2071707589285714" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="disabled" backgroundImage="CellImage.png"/>
+                                <state key="selected" backgroundImage="CellImage.png"/>
+                                <state key="highlighted" backgroundImage="searchButtonInverted.png"/>
                                 <connections>
                                     <action selector="searchTheQuery:" destination="5hP-3R-fM6" eventType="touchUpInside" id="1CO-9w-2FW"/>
                                     <segue destination="8GU-tC-Vqi" kind="push" identifier="searchID" id="eA1-St-S8P"/>
@@ -332,6 +335,8 @@
         <image name="btshareall.png" width="56" height="60"/>
         <image name="pageView.png" width="285" height="388"/>
         <image name="scripts.png" width="320" height="250"/>
+        <image name="searchButton.png" width="500" height="100"/>
+        <image name="searchButtonInverted.png" width="500" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4341D1B186C0D6300995297 /* ParseVOTD.m */; };
+		E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E4341D44186C50C500995297 /* searchButtonInverted.png */; };
 		E4477C491867EF2A0004799F /* SerialPublication.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4477C481867EF020004799F /* SerialPublication.ttf */; };
 		E4477CFC18685D130004799F /* 1.1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477CE518685D130004799F /* 1.1@2x.png */; };
 		E4477CFD18685D130004799F /* 1.2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477CE618685D130004799F /* 1.2@2x.png */; };
@@ -94,6 +96,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4341D1A186C0D6300995297 /* ParseVOTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseVOTD.h; sourceTree = "<group>"; };
+		E4341D1B186C0D6300995297 /* ParseVOTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseVOTD.m; sourceTree = "<group>"; };
+		E4341D44186C50C500995297 /* searchButtonInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonInverted.png; sourceTree = "<group>"; };
 		E4477C481867EF020004799F /* SerialPublication.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SerialPublication.ttf; sourceTree = "<group>"; };
 		E4477CE518685D130004799F /* 1.1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1.1@2x.png"; sourceTree = "<group>"; };
 		E4477CE618685D130004799F /* 1.2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1.2@2x.png"; sourceTree = "<group>"; };
@@ -268,6 +273,8 @@
 				E4CC3455185F080300B7FB1E /* ParserOfHTML.m */,
 				E4CC3457185F115200B7FB1E /* Verse.h */,
 				E4CC3458185F115200B7FB1E /* Verse.m */,
+				E4341D1A186C0D6300995297 /* ParseVOTD.h */,
+				E4341D1B186C0D6300995297 /* ParseVOTD.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -389,6 +396,7 @@
 			children = (
 				E4477CE418685D130004799F /* scroll animation */,
 				E4477D13186860D70004799F /* btshareall.png */,
+				E4341D44186C50C500995297 /* searchButtonInverted.png */,
 				E4477D14186860D70004799F /* btshareall@2x.png */,
 				E4D46E8A18697D8400F12B63 /* transperentButton.png */,
 				E4477D17186866020004799F /* searchButton.png */,
@@ -483,6 +491,7 @@
 				E4477CFD18685D130004799F /* 1.2@2x.png in Resources */,
 				E4AB7B081861976000655F99 /* Callie_Hand.otf in Resources */,
 				E4477D0418685D130004799F /* 14.2@2x.png in Resources */,
+				E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */,
 				E4477D16186860D70004799F /* btshareall@2x.png in Resources */,
 				E4477D0A18685D130004799F /* 4.2@2x.png in Resources */,
 				E4477D0718685D130004799F /* 3.1@2x.png in Resources */,
@@ -545,6 +554,7 @@
 				E4CC3453185ED27900B7FB1E /* AFURLSessionManager.m in Sources */,
 				E4D5D5D91861731E004DBE2E /* BackButton.m in Sources */,
 				E4CC3451185ED27900B7FB1E /* AFURLRequestSerialization.m in Sources */,
+				E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */,
 				E4D4268E183C67DA00B29596 /* main.m in Sources */,
 				E4CC3452185ED27900B7FB1E /* AFURLResponseSerialization.m in Sources */,
 				E4CC3459185F115200B7FB1E /* Verse.m in Sources */,

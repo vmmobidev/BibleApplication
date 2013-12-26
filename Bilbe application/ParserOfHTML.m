@@ -85,62 +85,62 @@
                     break;
             }
             
-            while (1)
-            {
-                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&ldquo;"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
-            
-            while (1)
-            {
-                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&rdquo;"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
-            
-            while (1)
-            {
-                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&lsquo;"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
-            
-            
-            while (1)
-            {
-                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&rsquo;"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
-            
-            
-            while (1)
-            {
-                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&mdash;"];
-                
-                if (rangeForRemoving.location != NSNotFound)
-                {
-                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
-                }else
-                    break;
-            }
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&ldquo;"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
+//            
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&rdquo;"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
+//            
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&lsquo;"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
+//            
+//            
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&rsquo;"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
+//            
+//            
+//            while (1)
+//            {
+//                NSRange rangeForRemoving = [stringgggggggg rangeOfString:@"&mdash;"];
+//                
+//                if (rangeForRemoving.location != NSNotFound)
+//                {
+//                    [stringgggggggg deleteCharactersInRange:rangeForRemoving];
+//                }else
+//                    break;
+//            }
             
 //            NSLog(@"%@", stringForParsing);
             
