@@ -33,6 +33,8 @@
     BOOL verseIsCompletelyCopied;
     NSMutableString *stringForAppendingVerses;
     
+    BOOL activityViewShouldGo;
+    
     UIView *activityView;
     UIActivityIndicatorView *activityWheel;
 }
@@ -52,6 +54,8 @@
 
     NSLog(@"List view is loaded");
     
+    activityViewShouldGo = NO;
+    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(reachabilityChanged:)
                                                  name: kReachabilityChangedNotification
@@ -68,7 +72,6 @@
     backgroudImageView.frame = self.tableView.frame;
     self.tableView.backgroundView = backgroudImageView;
     
-
     
     [self getSearchResults];
 }
@@ -144,6 +147,8 @@
 
 - (void)dealloc
 {
+    NSLog(@"Dealloc");
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
 }
 
@@ -163,6 +168,7 @@
 
 - (void)backButtonisPressed
 {
+    [activityView removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -180,9 +186,9 @@
     
     if (!activityView)
     {
-        activityView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, window.bounds.size.width, window.bounds.size.height)];
+        activityView = [[UIView alloc] initWithFrame: CGRectMake(0, 63, window.bounds.size.width, window.bounds.size.height)];
         activityView.backgroundColor = [UIColor blackColor];
-        activityView.alpha = 0.5;
+        activityView.alpha = .5;
         
         activityWheel = [[UIActivityIndicatorView alloc] initWithFrame: CGRectMake(window.bounds.size.width / 2 - 12, window.bounds.size.height / 2 - 12, 24, 24)];
         activityWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
