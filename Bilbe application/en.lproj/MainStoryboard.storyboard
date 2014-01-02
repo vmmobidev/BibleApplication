@@ -205,8 +205,8 @@
                                     <constraint firstAttribute="width" constant="280" id="hqG-AT-vir"/>
                                     <constraint firstAttribute="height" constant="30" id="kcy-w2-jKO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <fontDescription key="fontDescription" name="Baskerville-SemiBoldItalic" family="Baskerville" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                 <connections>
                                     <action selector="returnKeyPressed:" destination="5hP-3R-fM6" eventType="editingDidEndOnExit" id="KaG-xc-Ulg"/>
                                 </connections>
@@ -267,9 +267,42 @@
                                     <segue destination="8GU-tC-Vqi" kind="push" identifier="searchID" id="eA1-St-S8P"/>
                                 </connections>
                             </button>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="25" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QuD-pC-7hD">
+                                <rect key="frame" x="27" y="106" width="267" height="218"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="218" id="c5m-AY-pOK"/>
+                                    <constraint firstAttribute="width" constant="267" id="dU7-5L-evz"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="autocompleteID" id="pHO-pn-cxP">
+                                        <rect key="frame" x="0.0" y="22" width="267" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pHO-pn-cxP" id="Kzm-fr-JCl">
+                                            <rect key="frame" x="0.0" y="0.0" width="267" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSr-Zd-iYv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5hP-3R-fM6" id="5Qr-lU-S72"/>
+                                    <outlet property="delegate" destination="5hP-3R-fM6" id="OOv-7n-qVQ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QuD-pC-7hD" firstAttribute="leading" secondItem="5Jl-jx-IZN" secondAttribute="trailing" constant="-293" id="3jH-v7-KOq"/>
                             <constraint firstItem="iFx-5X-P0y" firstAttribute="centerX" secondItem="5Jl-jx-IZN" secondAttribute="centerX" id="3kM-s7-j5o"/>
                             <constraint firstItem="Tpe-Xz-Iyj" firstAttribute="top" secondItem="6Uy-Hn-rMn" secondAttribute="bottom" constant="6" id="4XZ-ik-fSW"/>
                             <constraint firstAttribute="trailing" secondItem="5Jl-jx-IZN" secondAttribute="trailing" id="4zj-vP-Ygx"/>
@@ -287,6 +320,7 @@
                             <constraint firstAttribute="trailing" secondItem="cI9-Ed-MvR" secondAttribute="trailing" constant="20" id="kpg-uX-50t"/>
                             <constraint firstItem="cI9-Ed-MvR" firstAttribute="leading" secondItem="suU-kT-tIE" secondAttribute="leading" constant="20" id="lwq-05-y07"/>
                             <constraint firstItem="6Uy-Hn-rMn" firstAttribute="top" secondItem="J69-Ih-qgW" secondAttribute="bottom" constant="-240" id="vbD-dz-jcT"/>
+                            <constraint firstItem="QuD-pC-7hD" firstAttribute="top" secondItem="cI9-Ed-MvR" secondAttribute="bottom" id="wFW-n1-L8p"/>
                         </constraints>
                         <connections>
                             <action selector="resignKeyboard:" destination="5hP-3R-fM6" eventType="touchDown" id="inT-I6-zCI"/>
@@ -297,6 +331,8 @@
                     <connections>
                         <outlet property="VOTDTextView" destination="Tpe-Xz-Iyj" id="hdu-xe-nDt"/>
                         <outlet property="activityIndicator" destination="LMO-vD-elB" id="kkp-jv-kvw"/>
+                        <outlet property="autocompleteHeightConst" destination="c5m-AY-pOK" id="uFF-Fm-sAD"/>
+                        <outlet property="autocompleteList" destination="QuD-pC-7hD" id="afD-cv-Wvs"/>
                         <outlet property="imageView" destination="J69-Ih-qgW" id="BbO-OS-LZ0"/>
                         <outlet property="imageViewBottomConst" destination="dUl-2R-Gx2" id="fuv-Le-tC7"/>
                         <outlet property="serachButton" destination="iFx-5X-P0y" id="5hU-3k-nQx"/>
@@ -306,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rhg-IR-AmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58" y="-23"/>
+            <point key="canvasLocation" x="-48" y="-23"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SZo-fT-yDn">

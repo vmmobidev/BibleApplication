@@ -17,13 +17,15 @@
 
 
 
-@interface SearchViewController : UIViewController < UITextFieldDelegate >
+@interface SearchViewController : UIViewController < UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate >
 @property (weak, nonatomic) IBOutlet UITextField *textFieldForSearching;
 @property (weak, nonatomic) IBOutlet UITextView *VOTDTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UITableView *autocompleteList;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *serachFieldTopConst;
 @property (strong, nonatomic) Verse *verseOfTheDay;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewBottomConst;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *autocompleteHeightConst;
 
 - (IBAction)searchTheQuery:(id)sender;
 - (IBAction)returnKeyPressed:(UITextField *)sender;

@@ -11,6 +11,7 @@
 #import "AFNetworking.h"
 #import "Reachability.h"
 #import "ParseVOTD.h"
+#import "DatabaseManager.h"
 #define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=xml"]
 
 @interface SearchViewController ()
@@ -27,6 +28,8 @@
     NSMutableString *votdVerse;
     NSString *stringToBeSent;
     UIFont *fontForTxtFldWhileEditing;
+    NSMutableArray *autoCompleteArray;
+    NSArray *arrayOfKeyWords;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +54,7 @@
     
     _imageView.animationDuration = .8;
     _imageView.animationRepeatCount = 1;
+    
     [_imageView startAnimating];
 
     fontForTxtFldWhileEditing = _textFieldForSearching.font;
@@ -95,6 +99,12 @@
 
     self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
 	[self.hostReachability startNotifier];
+    
+    DatabaseManager *databaseManager = [[DatabaseManager alloc] init];
+    arrayOfKeyWords = [databaseManager getTheKeyWordsFromDatabase];
+    NSLog(@"array of keywords = %i", arrayOfKeyWords.count);
+    
+    autoCompleteArray = [[NSMutableArray alloc] init];
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification
@@ -112,6 +122,8 @@
         NSTimer *delayForVOTD ;
         delayForVOTD = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(getVOTDFromAPI) userInfo:Nil repeats:NO];
     }
+    
+
 }
 
 - (void)dealloc
@@ -142,7 +154,6 @@
 - (void)getVOTDFromAPI
 {
     NSLog(@"VOTD");
-    
     _verseOfTheDay = [[Verse alloc] init];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:URLForVOTD];
@@ -215,8 +226,6 @@
             [attributeStrForChapters appendAttributedString:attributeStrForVerses];
             
             _VOTDTextView.attributedText = attributeStrForChapters;
-
-        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -255,7 +264,7 @@
     {
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionBeginFromCurrentState) animations:^{
+        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
             _textFieldForSearching.text =@"  Ask somethig here...";
         } completion:Nil];
         return NO;
@@ -322,6 +331,7 @@
 
 - (IBAction)resignKeyboard:(id)sender
 {
+    _autocompleteList.hidden = YES;
     [_textFieldForSearching resignFirstResponder];
 }
 
@@ -335,6 +345,63 @@
     }
 }
 
+
+//To get autocomplete results
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring
+{
+    [autoCompleteArray removeAllObjects];
+    
+    NSMutableArray *arryForFirstList = [[NSMutableArray alloc] init];
+    NSMutableArray *arrayOfSecondList = [[NSMutableArray alloc] init];
+    
+    for (NSString *currentString in arrayOfKeyWords)
+    {
+        NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
+        
+        if ( substringRange.location == 0)
+        {
+            [arryForFirstList addObject:currentString];
+        } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
+        {
+            [arrayOfSecondList addObject:currentString];
+        }
+    }
+    
+    [arryForFirstList addObjectsFromArray:arrayOfSecondList];
+    autoCompleteArray = arryForFirstList;
+    
+    [self.autocompleteList reloadData];
+    
+    
+//Tableview height according to number of cells
+    int maxNumberOfCell;
+    
+    if ([UIScreen mainScreen].bounds.size.height == 568)
+        maxNumberOfCell = 6;
+    else
+        maxNumberOfCell = 5;
+    
+    CGFloat heigtOfTableView;
+    
+    if (autoCompleteArray.count < maxNumberOfCell)
+    {
+         heigtOfTableView = _autocompleteList.rowHeight * autoCompleteArray.count;
+
+    } else
+    {
+        heigtOfTableView = _autocompleteList.rowHeight * maxNumberOfCell;
+    }
+    
+    _autocompleteHeightConst.constant = heigtOfTableView;
+
+//    CGRect frameOfTableView = _autocompleteList.frame;
+//    frameOfTableView.size.height = heigtOfTableView;
+//    _autocompleteList.frame = frameOfTableView;
+}
+
+
+#pragma mark
+#pragma TExtfield delegte methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     if ([_textFieldForSearching.text isEqualToString:@"  Ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
@@ -347,6 +414,52 @@
             
         } completion:Nil];
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    _autocompleteList.hidden = NO;
+    NSString *subString = [NSString stringWithString:textField.text];
+    subString = [subString stringByReplacingCharactersInRange:range withString:string];
+    [self searchAutocompleteEntriesWithSubstring:subString];
+    
+    if (subString.length == 0)
+    {
+        _autocompleteList.hidden = YES;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    _autocompleteList.hidden = YES;
+    return YES;
+}
+
+#pragma mark
+#pragma Tableview delegate and datasource methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
+    return autoCompleteArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = nil;
+    static NSString *AutoCompleteRowIdentifier = @"autocompleteID";
+    cell = [tableView dequeueReusableCellWithIdentifier:AutoCompleteRowIdentifier];
+    
+    //tableView.frame = CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, tableView.contentSize.height);
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
+    cell.textLabel.text = [autoCompleteArray objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _autocompleteList.hidden = YES;
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    _textFieldForSearching.text = selectedCell.textLabel.text;
 }
 
 @end
