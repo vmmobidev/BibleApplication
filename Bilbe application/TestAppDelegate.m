@@ -43,25 +43,38 @@
     UIImage *barButtonImage = [[UIImage imageNamed:@"transperentButton.png"] resizableImageWithCapInsets:(UIEdgeInsetsMake(0, 0, 0, 0))];
     [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:(UIControlStateNormal) barMetrics:(UIBarMetricsDefault)];
     
+    CGFloat navigationBarTitleFontSize, barButtonFontSize;
+
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        navigationBarTitleFontSize = 38;
+        barButtonFontSize = 37;
+    } else
+    {
+        navigationBarTitleFontSize = 33;
+        barButtonFontSize = 30;
+    }
+    
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
     {
         [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor:[UIColor whiteColor],
                                                                UITextAttributeTextShadowOffset:[NSValue valueWithCGSize:shadow.shadowOffset],
                                                                UITextAttributeTextShadowColor:shadow.shadowColor,
-                                                               UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+                                                               UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:navigationBarTitleFontSize]}];
         
         
         [[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor],
-                                                               UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
+                                                               UITextAttributeFont: [UIFont fontWithName:@"JamesFajardo" size:barButtonFontSize]} forState:(UIControlStateNormal)];
     } else
     {
         [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
                                                                NSShadowAttributeName:shadow ,
-                                                               NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:33]}];
+                                                               NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:navigationBarTitleFontSize]}];
         
         
         [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                               NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:30]} forState:(UIControlStateNormal)];
+                                                               NSFontAttributeName: [UIFont fontWithName:@"JamesFajardo" size:barButtonFontSize]} forState:(UIControlStateNormal)];
     }
 }
 

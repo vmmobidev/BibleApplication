@@ -69,24 +69,30 @@
 //    [_serachButton setBackgroundImage:[UIImage imageNamed:@"searchButton.png"] forState:UIControlStateNormal];
     
     
-    if ([UIScreen mainScreen].bounds.size.height == 568)
-    {
-        _serachFieldTopConst.constant=120;
-        _imageViewBottomConst.constant = -330;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        if ([UIScreen mainScreen].bounds.size.height == 568)
+        {
+            _serachFieldTopConst.constant=120;
+            _imageViewBottomConst.constant = -330;
+        }
+        
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        {
+            _serachFieldTopConst.constant = 20.0f;
+        } else
+        {
+        }
     }
     
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
-    {
-        _serachFieldTopConst.constant = 20.0f;
-    } else
-    {
-    }
     
     _activityIndicator.hidden = YES;
     
 //    NSTimer *delayForVOTD = [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(getVOTDFromAPI) userInfo:Nil repeats:NO];
     
     self.title = @"Responses From Bible";
+    
+//    self.navigationController.navigationItem.titleView
     
 //    self.textFieldForSearching.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"textfield.png"]];
     
@@ -376,23 +382,29 @@
 //Tableview height according to number of cells
     int maxNumberOfCell;
     
-    if ([UIScreen mainScreen].bounds.size.height == 568)
-        maxNumberOfCell = 6;
-    else
-        maxNumberOfCell = 5;
-    
-    CGFloat heigtOfTableView;
-    
-    if (autoCompleteArray.count < maxNumberOfCell)
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-         heigtOfTableView = _autocompleteList.rowHeight * autoCompleteArray.count;
-
-    } else
-    {
-        heigtOfTableView = _autocompleteList.rowHeight * maxNumberOfCell;
-    }
+        if ([UIScreen mainScreen].bounds.size.height == 568)
+            maxNumberOfCell = 6;
+        else
+            maxNumberOfCell = 5;
+    } else  maxNumberOfCell = 7;
     
-    _autocompleteHeightConst.constant = heigtOfTableView;
+        CGFloat heigtOfTableView;
+    
+    NSLog(@"%i",maxNumberOfCell);
+    
+        if (autoCompleteArray.count < maxNumberOfCell)
+        {
+            heigtOfTableView = _autocompleteList.rowHeight * autoCompleteArray.count;
+            
+        } else
+        {
+            heigtOfTableView = _autocompleteList.rowHeight * maxNumberOfCell;
+        }
+        
+        _autocompleteHeightConst.constant = heigtOfTableView;
+    
 
 //    CGRect frameOfTableView = _autocompleteList.frame;
 //    frameOfTableView.size.height = heigtOfTableView;

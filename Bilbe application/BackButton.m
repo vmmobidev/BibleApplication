@@ -21,7 +21,12 @@
 //        [self setBackgroundImage:backButtonImage  forState:UIControlStateNormal];
         [self setTitle:@"< Back " forState:UIControlStateNormal];
         
-        self.titleLabel.font = [UIFont fontWithName:@"JamesFajardo" size:30];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        {
+            self.titleLabel.font = [UIFont fontWithName:@"JamesFajardo" size:37];
+        } else
+            self.titleLabel.font = [UIFont fontWithName:@"JamesFajardo" size:30];
+        
         
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
