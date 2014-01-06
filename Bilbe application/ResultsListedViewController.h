@@ -13,6 +13,4 @@
 
 @property (strong, nonatomic) NSString *searchQuery;
 
-
-
 @end

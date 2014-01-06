@@ -56,7 +56,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+    } else
+    {
+//        UIButton *buttonForPopoverView = [[UIButton alloc] initWithFrame:(CGRectMake(0, 0, <#CGFloat width#>, <#CGFloat height#>))]
+//        self.navigationController.navigationItem.titleView =
+    }
     self.title = [self.verse.chapter capitalizedString];
+
     self.scrollDownButton.hidden = YES;
     self.scrollUpButton.hidden = YES;
     
@@ -74,8 +82,14 @@
 {
     [super viewWillAppear:animated];
     
+    UIFont *fontForTextView ;
     
-    UIFont *fontForTextView = [UIFont fontWithName:@"Desyrel" size:20];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        fontForTextView = [UIFont fontWithName:@"Desyrel" size:30];
+
+    } else
+        fontForTextView = [UIFont fontWithName:@"Desyrel" size:20];
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
     [paragraphStyle setLineSpacing:1.5];

@@ -327,6 +327,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="nFO-yq-EoN"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="VOTDTextView" destination="Tpe-Xz-Iyj" id="hdu-xe-nDt"/>
@@ -349,6 +350,7 @@
             <objects>
                 <navigationController id="yAI-zA-I1x" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lD0-Wu-Bla">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

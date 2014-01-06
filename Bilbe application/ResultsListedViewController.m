@@ -72,7 +72,6 @@
     backgroudImageView.frame = self.tableView.frame;
     self.tableView.backgroundView = backgroudImageView;
     
-    
     [self getSearchResults];
 }
 
@@ -248,6 +247,8 @@
     
     label.text = [arrayOfChapter objectAtIndex:indexPath.row];
     
+//    cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }

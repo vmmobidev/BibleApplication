@@ -60,7 +60,14 @@
     fontForTxtFldWhileEditing = _textFieldForSearching.font;
     _textFieldForSearching.delegate = self;
     
-    _serachButton.titleLabel.font = [UIFont fontWithName:@"JamesFajardo" size:26];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        _serachButton.titleLabel.font = [UIFont fontWithName:@"JamesFajardo" size:30];
+
+    } else
+        _serachButton.titleLabel.font = [UIFont fontWithName:@"JamesFajardo" size:26];
+
     _serachButton.titleLabel.textColor = [UIColor colorWithRed:222/255 green:204/255 blue:126/255 alpha:1];
     _serachButton.titleLabel.shadowColor = [UIColor blackColor];
     
@@ -90,7 +97,7 @@
     
 //    NSTimer *delayForVOTD = [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(getVOTDFromAPI) userInfo:Nil repeats:NO];
     
-    self.title = @"Responses From Bible";
+    self.title = @"Quest For Bible Verses";
     
 //    self.navigationController.navigationItem.titleView
     
@@ -171,71 +178,77 @@
         
         ParseVOTD *parserForVODT = [[ParseVOTD alloc] init];
         NSDictionary *dictionaryOfVerse = [parserForVODT getVOTDForData:data];
-//        
-//        NSError *error = nil;
-//        NSArray *parsedOutput = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//        
-//        if (error)
-//        {
-//            NSLog(@"%@: %@",error, [error userInfo]);
-//            
-//        } else
-//        {
-//            NSDictionary *dictonaryFromJson = parsedOutput[0];
-//            NSString *chapther = [NSString stringWithFormat:@"%@ %@:%@", dictonaryFromJson[@"bookname"], dictonaryFromJson[@"chapter"], dictonaryFromJson[@"verse"]];
-//            
-//            
-//            NSMutableString *verseOfTheDay = [dictonaryFromJson[@"text"] mutableCopy];
-//            
-//            while (1)
-//            {
-//                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"<b>"];
-//                
-//                if (rangeForRemoving.location != NSNotFound)
-//                {
-//                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
-//                }else
-//                    break;
-//            }
-//            
-//            while (1)
-//            {
-//                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"</b>"];
-//                
-//                if (rangeForRemoving.location != NSNotFound)
-//                {
-//                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
-//                }else
-//                    break;
-//            }
+        //
+        //        NSError *error = nil;
+        //        NSArray *parsedOutput = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        //
+        //        if (error)
+        //        {
+        //            NSLog(@"%@: %@",error, [error userInfo]);
+        //
+        //        } else
+        //        {
+        //            NSDictionary *dictonaryFromJson = parsedOutput[0];
+        //            NSString *chapther = [NSString stringWithFormat:@"%@ %@:%@", dictonaryFromJson[@"bookname"], dictonaryFromJson[@"chapter"], dictonaryFromJson[@"verse"]];
+        //
+        //
+        //            NSMutableString *verseOfTheDay = [dictonaryFromJson[@"text"] mutableCopy];
+        //
+        //            while (1)
+        //            {
+        //                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"<b>"];
+        //
+        //                if (rangeForRemoving.location != NSNotFound)
+        //                {
+        //                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
+        //                }else
+        //                    break;
+        //            }
+        //
+        //            while (1)
+        //            {
+        //                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"</b>"];
+        //
+        //                if (rangeForRemoving.location != NSNotFound)
+        //                {
+        //                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
+        //                }else
+        //                    break;
+        //            }
         
-            
-            _verseOfTheDay.chapter = dictionaryOfVerse[@"chapter"];
-            _verseOfTheDay.verse = dictionaryOfVerse[@"verse"];
-            
-            _activityIndicator.hidden = YES;
-            
-            UIFont *fontForChapters = [UIFont fontWithName:@"JamesFajardo" size:33];
-            UIFont *fontForVerses =[UIFont fontWithName:@"Desyrel" size:17.0];
-            
-            
-            NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
-            paragraph.lineSpacing = 3.0f;
-            paragraph.alignment = NSTextAlignmentCenter;
-            
-            NSMutableAttributedString *attributeStrForChapters = [[NSMutableAttributedString alloc] initWithString:self.verseOfTheDay.chapter attributes:@{NSFontAttributeName:fontForChapters,NSParagraphStyleAttributeName:paragraph, NSForegroundColorAttributeName: [UIColor redColor]}];
-            
-            NSMutableAttributedString *attributeStrForVerses = [[NSMutableAttributedString alloc] initWithString:self.verseOfTheDay.verse attributes:@{NSFontAttributeName:fontForVerses,NSParagraphStyleAttributeName:paragraph}];
-            NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"\n"];
-            [attributeStrForChapters appendAttributedString:attributedString];
-            
-            [attributeStrForChapters appendAttributedString:attributeStrForVerses];
-            
-            _VOTDTextView.attributedText = attributeStrForChapters;
+        
+        _verseOfTheDay.chapter = dictionaryOfVerse[@"chapter"];
+        _verseOfTheDay.verse = dictionaryOfVerse[@"verse"];
+        
+        _activityIndicator.hidden = YES;
+        UIFont *fontForChapters;
+        UIFont *fontForVerses;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        {
+            fontForChapters = [UIFont fontWithName:@"JamesFajardo" size:33];
+            fontForVerses =[UIFont fontWithName:@"Desyrel" size:17.0];
+        } else
+        {
+            fontForChapters = [UIFont fontWithName:@"JamesFajardo" size:50];
+            fontForVerses =[UIFont fontWithName:@"Desyrel" size:29];
+        }
+        NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+        paragraph.lineSpacing = 3.0f;
+        paragraph.alignment = NSTextAlignmentCenter;
+        
+        NSMutableAttributedString *attributeStrForChapters = [[NSMutableAttributedString alloc] initWithString:self.verseOfTheDay.chapter attributes:@{NSFontAttributeName:fontForChapters,NSParagraphStyleAttributeName:paragraph, NSForegroundColorAttributeName: [UIColor redColor]}];
+        
+        NSMutableAttributedString *attributeStrForVerses = [[NSMutableAttributedString alloc] initWithString:self.verseOfTheDay.verse attributes:@{NSFontAttributeName:fontForVerses,NSParagraphStyleAttributeName:paragraph}];
+        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"\n"];
+        [attributeStrForChapters appendAttributedString:attributedString];
+        
+        [attributeStrForChapters appendAttributedString:attributeStrForVerses];
+        
+        _VOTDTextView.attributedText = attributeStrForChapters;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-
+        
     }];
     
     _activityIndicator.hidden = NO;
@@ -377,6 +390,7 @@
     autoCompleteArray = arryForFirstList;
     
     [self.autocompleteList reloadData];
+    [_autocompleteList setContentOffset:(CGPointZero)];
     
     
 //Tableview height according to number of cells
@@ -391,9 +405,7 @@
     } else  maxNumberOfCell = 7;
     
         CGFloat heigtOfTableView;
-    
-    NSLog(@"%i",maxNumberOfCell);
-    
+
         if (autoCompleteArray.count < maxNumberOfCell)
         {
             heigtOfTableView = _autocompleteList.rowHeight * autoCompleteArray.count;
