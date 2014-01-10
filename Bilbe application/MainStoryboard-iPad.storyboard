@@ -60,7 +60,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4KE-8i-dFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="186" y="37"/>
+            <point key="canvasLocation" x="-134" y="37"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Euk-qm-P6i">
@@ -180,7 +180,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1199" y="37"/>
+            <point key="canvasLocation" x="715" y="37"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Xf8-hs-tuH">
@@ -340,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bop-Re-CT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-794" y="37"/>
+            <point key="canvasLocation" x="-970" y="37"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2KP-qy-A20">

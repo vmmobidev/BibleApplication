@@ -61,26 +61,26 @@
             
             
             
-            NSMutableString *stringgggggggg = [stringForParsing mutableCopy];
+            NSMutableString *stringOfMutableType = [stringForParsing mutableCopy];
             
             while (1)
             {
-                NSRange rangeForReplaceing = [stringgggggggg rangeOfString:@"<span class=\"sc\">Lord</span>"];
+                NSRange rangeForReplaceing = [stringOfMutableType rangeOfString:@"<span class=\"sc\">Lord</span>"];
                 
                 if (rangeForReplaceing.location != NSNotFound)
                 {
-                    [stringgggggggg replaceCharactersInRange:rangeForReplaceing withString:@"Lord"];
+                    [stringOfMutableType replaceCharactersInRange:rangeForReplaceing withString:@"Lord"];
                 }else
                     break;
             }
             
             while (1)
             {
-                NSRange rangeForReplaceing = [stringgggggggg rangeOfString:@"<span class=\"sc\">God</span>"];
+                NSRange rangeForReplaceing = [stringOfMutableType rangeOfString:@"<span class=\"sc\">God</span>"];
                 
                 if (rangeForReplaceing.location != NSNotFound)
                 {
-                    [stringgggggggg replaceCharactersInRange:rangeForReplaceing withString:@"God"];
+                    [stringOfMutableType replaceCharactersInRange:rangeForReplaceing withString:@"God"];
                 }else
                     break;
             }
@@ -145,7 +145,7 @@
 //            NSLog(@"%@", stringForParsing);
             
             // Parsing the string
-            NSData *dataToBeParsed = [stringgggggggg dataUsingEncoding:NSUTF8StringEncoding];
+            NSData *dataToBeParsed = [stringOfMutableType dataUsingEncoding:NSUTF8StringEncoding];
             NSXMLParser *parser = [[NSXMLParser alloc] initWithData:dataToBeParsed];
             parser.delegate = self;
             
