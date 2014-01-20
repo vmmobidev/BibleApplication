@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E424E2BB1883B6C700C40E49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E424E2BA1883B6C700C40E49 /* Images.xcassets */; };
 		E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4341D1B186C0D6300995297 /* ParseVOTD.m */; };
 		E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E4341D44186C50C500995297 /* searchButtonInverted.png */; };
 		E4477C491867EF2A0004799F /* SerialPublication.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4477C481867EF020004799F /* SerialPublication.ttf */; };
@@ -36,6 +37,7 @@
 		E4477D15186860D70004799F /* btshareall.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477D13186860D70004799F /* btshareall.png */; };
 		E4477D16186860D70004799F /* btshareall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477D14186860D70004799F /* btshareall@2x.png */; };
 		E4477D18186866020004799F /* searchButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477D17186866020004799F /* searchButton.png */; };
+		E44AE36A188CF8A600B2DADF /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44AE369188CF8A600B2DADF /* libFlurry_4.3.1.a */; };
 		E44C1852187671B500495266 /* nav@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E44C1851187671B500495266 /* nav@2x~ipad.png */; };
 		E44C1854187675E000495266 /* nav~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E44C1853187675E000495266 /* nav~ipad.png */; };
 		E4742A9A1872CC450044E1C7 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4742A991872CC450044E1C7 /* DatabaseManager.m */; };
@@ -81,24 +83,6 @@
 		E4E324A7187A65560081EE04 /* ArrowForScrollDown~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E324A3187A65560081EE04 /* ArrowForScrollDown~ipad.png */; };
 		E4E324A8187A65560081EE04 /* ArrowForScrollUp@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E324A4187A65560081EE04 /* ArrowForScrollUp@2x~ipad.png */; };
 		E4E324A9187A65560081EE04 /* ArrowForScrollUp~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E324A5187A65560081EE04 /* ArrowForScrollUp~ipad.png */; };
-		E4E32542187ACA520081EE04 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32530187ACA520081EE04 /* Default-568h@2x.png */; };
-		E4E32543187ACA520081EE04 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32531187ACA520081EE04 /* Default.png */; };
-		E4E32544187ACA520081EE04 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32532187ACA520081EE04 /* Default@2x.png */; };
-		E4E32545187ACA520081EE04 /* Default@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32533187ACA520081EE04 /* Default@2x~ipad.png */; };
-		E4E32546187ACA520081EE04 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32534187ACA520081EE04 /* Default~ipad.png */; };
-		E4E32547187ACA520081EE04 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32535187ACA520081EE04 /* Icon-100.png */; };
-		E4E32548187ACA520081EE04 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32536187ACA520081EE04 /* Icon-120.png */; };
-		E4E32549187ACA520081EE04 /* Icon-152~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32537187ACA520081EE04 /* Icon-152~ipad.png */; };
-		E4E3254A187ACA520081EE04 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32538187ACA520081EE04 /* Icon-40.png */; };
-		E4E3254B187ACA520081EE04 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32539187ACA520081EE04 /* Icon-50.png */; };
-		E4E3254C187ACA520081EE04 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E3253A187ACA520081EE04 /* Icon-76.png */; };
-		E4E3254D187ACA520081EE04 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E3253B187ACA520081EE04 /* Icon-80.png */; };
-		E4E3254E187ACA520081EE04 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E3253C187ACA520081EE04 /* Icon-Small.png */; };
-		E4E3254F187ACA520081EE04 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E3253D187ACA520081EE04 /* Icon-Small@2x.png */; };
-		E4E32550187ACA520081EE04 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E3253E187ACA520081EE04 /* icon.png */; };
-		E4E32551187ACA520081EE04 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E3253F187ACA520081EE04 /* Icon@2x.png */; };
-		E4E32552187ACA520081EE04 /* Icon@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32540187ACA520081EE04 /* Icon@2x~ipad.png */; };
-		E4E32553187ACA520081EE04 /* Icon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E32541187ACA520081EE04 /* Icon~ipad.png */; };
 		E4E38DF8186312E100CD85B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E38DF7186312E100CD85B6 /* Reachability.m */; };
 		E4E38E361863244900CD85B6 /* ArrowForScrollDown.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E38E211863244900CD85B6 /* ArrowForScrollDown.png */; };
 		E4E38E371863244900CD85B6 /* ArrowForScrollDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E38E221863244900CD85B6 /* ArrowForScrollDown@2x.png */; };
@@ -121,6 +105,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E424E2BA1883B6C700C40E49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Quest For Bible Verses/Images.xcassets"; sourceTree = "<group>"; };
 		E4341D1A186C0D6300995297 /* ParseVOTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseVOTD.h; sourceTree = "<group>"; };
 		E4341D1B186C0D6300995297 /* ParseVOTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseVOTD.m; sourceTree = "<group>"; };
 		E4341D44186C50C500995297 /* searchButtonInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonInverted.png; sourceTree = "<group>"; };
@@ -151,6 +136,8 @@
 		E4477D13186860D70004799F /* btshareall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btshareall.png; path = "scroll animation/btshareall.png"; sourceTree = "<group>"; };
 		E4477D14186860D70004799F /* btshareall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btshareall@2x.png"; path = "scroll animation/btshareall@2x.png"; sourceTree = "<group>"; };
 		E4477D17186866020004799F /* searchButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButton.png; sourceTree = "<group>"; };
+		E44AE368188CF8A600B2DADF /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		E44AE369188CF8A600B2DADF /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
 		E44C1851187671B500495266 /* nav@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav@2x~ipad.png"; sourceTree = "<group>"; };
 		E44C1853187675E000495266 /* nav~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav~ipad.png"; sourceTree = "<group>"; };
 		E4742A981872CC450044E1C7 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseManager.h; path = "Bilbe application/DatabaseManager.h"; sourceTree = SOURCE_ROOT; };
@@ -217,24 +204,6 @@
 		E4E324A3187A65560081EE04 /* ArrowForScrollDown~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ArrowForScrollDown~ipad.png"; sourceTree = "<group>"; };
 		E4E324A4187A65560081EE04 /* ArrowForScrollUp@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ArrowForScrollUp@2x~ipad.png"; sourceTree = "<group>"; };
 		E4E324A5187A65560081EE04 /* ArrowForScrollUp~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ArrowForScrollUp~ipad.png"; sourceTree = "<group>"; };
-		E4E32530187ACA520081EE04 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E4E32531187ACA520081EE04 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		E4E32532187ACA520081EE04 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		E4E32533187ACA520081EE04 /* Default@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~ipad.png"; sourceTree = "<group>"; };
-		E4E32534187ACA520081EE04 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = "<group>"; };
-		E4E32535187ACA520081EE04 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
-		E4E32536187ACA520081EE04 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
-		E4E32537187ACA520081EE04 /* Icon-152~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152~ipad.png"; sourceTree = "<group>"; };
-		E4E32538187ACA520081EE04 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
-		E4E32539187ACA520081EE04 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
-		E4E3253A187ACA520081EE04 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
-		E4E3253B187ACA520081EE04 /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
-		E4E3253C187ACA520081EE04 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		E4E3253D187ACA520081EE04 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		E4E3253E187ACA520081EE04 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		E4E3253F187ACA520081EE04 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		E4E32540187ACA520081EE04 /* Icon@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x~ipad.png"; sourceTree = "<group>"; };
-		E4E32541187ACA520081EE04 /* Icon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~ipad.png"; sourceTree = "<group>"; };
 		E4E38DF6186312E100CD85B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		E4E38DF7186312E100CD85B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E4E38E211863244900CD85B6 /* ArrowForScrollDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowForScrollDown.png; sourceTree = "<group>"; };
@@ -270,6 +239,7 @@
 				E4D42682183C67DA00B29596 /* UIKit.framework in Frameworks */,
 				E4D42684183C67DA00B29596 /* Foundation.framework in Frameworks */,
 				E4D42686183C67DA00B29596 /* CoreGraphics.framework in Frameworks */,
+				E44AE36A188CF8A600B2DADF /* libFlurry_4.3.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +274,15 @@
 				E4477CFB18685D130004799F /* 9.2@2x.png */,
 			);
 			path = "scroll animation";
+			sourceTree = "<group>";
+		};
+		E44AE367188CF88E00B2DADF /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				E44AE368188CF8A600B2DADF /* Flurry.h */,
+				E44AE369188CF8A600B2DADF /* libFlurry_4.3.1.a */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 		E47429B41872BE930044E1C7 /* DataBase */ = {
@@ -396,6 +375,7 @@
 		E4D42675183C67DA00B29596 = {
 			isa = PBXGroup;
 			children = (
+				E424E2BA1883B6C700C40E49 /* Images.xcassets */,
 				E4D42687183C67DA00B29596 /* Bilbe application */,
 				E4D42680183C67DA00B29596 /* Frameworks */,
 				E4D4267F183C67DA00B29596 /* Products */,
@@ -434,6 +414,7 @@
 				E4E38DF7186312E100CD85B6 /* Reachability.m */,
 				E4D42699183C67DA00B29596 /* MainStoryboard.storyboard */,
 				E4CC1D5918753DB100C60D49 /* MainStoryboard-iPad.storyboard */,
+				E44AE367188CF88E00B2DADF /* Flurry */,
 				E4CC3437185ED27900B7FB1E /* AFNetworking */,
 				E4AB7B0F18619B9200655F99 /* Model */,
 				E4AB7B1118619BB100655F99 /* CustomView */,
@@ -454,32 +435,6 @@
 				E4D4268F183C67DA00B29596 /* Quest For Bible Verses-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E4E3252F187ACA520081EE04 /* Icons&Splash */ = {
-			isa = PBXGroup;
-			children = (
-				E4E32530187ACA520081EE04 /* Default-568h@2x.png */,
-				E4E32531187ACA520081EE04 /* Default.png */,
-				E4E32532187ACA520081EE04 /* Default@2x.png */,
-				E4E32533187ACA520081EE04 /* Default@2x~ipad.png */,
-				E4E32534187ACA520081EE04 /* Default~ipad.png */,
-				E4E32535187ACA520081EE04 /* Icon-100.png */,
-				E4E32536187ACA520081EE04 /* Icon-120.png */,
-				E4E32537187ACA520081EE04 /* Icon-152~ipad.png */,
-				E4E32538187ACA520081EE04 /* Icon-40.png */,
-				E4E32539187ACA520081EE04 /* Icon-50.png */,
-				E4E3253A187ACA520081EE04 /* Icon-76.png */,
-				E4E3253B187ACA520081EE04 /* Icon-80.png */,
-				E4E3253C187ACA520081EE04 /* Icon-Small.png */,
-				E4E3253D187ACA520081EE04 /* Icon-Small@2x.png */,
-				E4E3253E187ACA520081EE04 /* icon.png */,
-				E4E3253F187ACA520081EE04 /* Icon@2x.png */,
-				E4E32540187ACA520081EE04 /* Icon@2x~ipad.png */,
-				E4E32541187ACA520081EE04 /* Icon~ipad.png */,
-			);
-			name = "Icons&Splash";
-			path = "IconsSplash&";
 			sourceTree = "<group>";
 		};
 		E4E38E201863244900CD85B6 /* Images */ = {
@@ -516,7 +471,6 @@
 				E4E38E301863244900CD85B6 /* pageView@2x.png */,
 				E4E38E311863244900CD85B6 /* scripts.png */,
 				E4E38E321863244900CD85B6 /* scripts@2x.png */,
-				E4E3252F187ACA520081EE04 /* Icons&Splash */,
 				E4477CE418685D130004799F /* scroll animation */,
 			);
 			path = Images;
@@ -551,6 +505,11 @@
 				CLASSPREFIX = Test;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Vmoksha;
+				TargetAttributes = {
+					E4D4267D183C67DA00B29596 = {
+						DevelopmentTeam = QGMN7468R5;
+					};
+				};
 			};
 			buildConfigurationList = E4D42679183C67DA00B29596 /* Build configuration list for PBXProject "Quest For Bible Verses" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -574,26 +533,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4E32550187ACA520081EE04 /* icon.png in Resources */,
 				E4E324A6187A65560081EE04 /* ArrowForScrollDown@2x~ipad.png in Resources */,
 				E4742AE41872E3310044E1C7 /* keywords.db in Resources */,
 				E4477C491867EF2A0004799F /* SerialPublication.ttf in Resources */,
-				E4E32547187ACA520081EE04 /* Icon-100.png in Resources */,
 				E48342FE18768A6B007194F2 /* background~ipad.jpg in Resources */,
-				E4E32546187ACA520081EE04 /* Default~ipad.png in Resources */,
 				E48342FC18768A17007194F2 /* background@2x~ipad.jpg in Resources */,
-				E4E32549187ACA520081EE04 /* Icon-152~ipad.png in Resources */,
+				E424E2BB1883B6C700C40E49 /* Images.xcassets in Resources */,
 				E4477CFE18685D130004799F /* 10@2x.png in Resources */,
 				E4477D0318685D130004799F /* 14.1@2x.png in Resources */,
 				E4E38E391863244900CD85B6 /* ArrowForScrollUp@2x.png in Resources */,
 				E4CC1D5A18753DB100C60D49 /* MainStoryboard-iPad.storyboard in Resources */,
-				E4E3254F187ACA520081EE04 /* Icon-Small@2x.png in Resources */,
 				E4AB7B0E18619AA700655F99 /* DESYREL_.ttf in Resources */,
 				E4AB7B0C186199D600655F99 /* Mawns_Handwriting.ttf in Resources */,
 				E4AB7B0A1861981900655F99 /* comesinhandy.ttf in Resources */,
-				E4E32544187ACA520081EE04 /* Default@2x.png in Resources */,
 				E4E38E3D1863244900CD85B6 /* background@2x.jpg in Resources */,
-				E4E32543187ACA520081EE04 /* Default.png in Resources */,
 				E4E324A8187A65560081EE04 /* ArrowForScrollUp@2x~ipad.png in Resources */,
 				E4E324A7187A65560081EE04 /* ArrowForScrollDown~ipad.png in Resources */,
 				E4477D1118685D130004799F /* 9.1@2x.png in Resources */,
@@ -602,12 +555,10 @@
 				E4477CFD18685D130004799F /* 1.2@2x.png in Resources */,
 				E4AB7B081861976000655F99 /* Callie_Hand.otf in Resources */,
 				E4477D0418685D130004799F /* 14.2@2x.png in Resources */,
-				E4E32551187ACA520081EE04 /* Icon@2x.png in Resources */,
 				E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */,
 				E4477D16186860D70004799F /* btshareall@2x.png in Resources */,
 				E4477D0A18685D130004799F /* 4.2@2x.png in Resources */,
 				E4477D0718685D130004799F /* 3.1@2x.png in Resources */,
-				E4E32542187ACA520081EE04 /* Default-568h@2x.png in Resources */,
 				E4E38E3F1863244900CD85B6 /* bar-button@2x.png in Resources */,
 				E4477D0218685D130004799F /* 13.2@2x.png in Resources */,
 				E44C1854187675E000495266 /* nav~ipad.png in Resources */,
@@ -616,42 +567,33 @@
 				E4E38E441863244900CD85B6 /* pageView.png in Resources */,
 				E4477D0518685D130004799F /* 15@2x.png in Resources */,
 				E44C1852187671B500495266 /* nav@2x~ipad.png in Resources */,
-				E4E32545187ACA520081EE04 /* Default@2x~ipad.png in Resources */,
 				E4477D0818685D130004799F /* 3.2@2x.png in Resources */,
 				E4477D0918685D130004799F /* 4.1@2x.png in Resources */,
 				E4E38E471863244900CD85B6 /* scripts@2x.png in Resources */,
-				E4E3254D187ACA520081EE04 /* Icon-80.png in Resources */,
 				E4477D0118685D130004799F /* 13.1@2x.png in Resources */,
 				E4477CFC18685D130004799F /* 1.1@2x.png in Resources */,
 				E4E38E3E1863244900CD85B6 /* bar-button.png in Resources */,
 				E4477D0E18685D130004799F /* 7.1@2x.png in Resources */,
-				E4E3254E187ACA520081EE04 /* Icon-Small.png in Resources */,
 				E4D46E8B18697D8400F12B63 /* transperentButton.png in Resources */,
 				E4AB7AC51861832D00655F99 /* James_Fajardo.ttf in Resources */,
 				E4E38E3B1863244900CD85B6 /* back-button@2x.png in Resources */,
 				E4D4268C183C67DA00B29596 /* InfoPlist.strings in Resources */,
 				E4477D0F18685D130004799F /* 7.2@2x.png in Resources */,
 				E4E38E3C1863244900CD85B6 /* background.jpg in Resources */,
-				E4E3254C187ACA520081EE04 /* Icon-76.png in Resources */,
 				E4E38E421863244900CD85B6 /* nav.png in Resources */,
 				E4E324A9187A65560081EE04 /* ArrowForScrollUp~ipad.png in Resources */,
 				E4477D0C18685D130004799F /* 5.2@2x.png in Resources */,
-				E4E3254A187ACA520081EE04 /* Icon-40.png in Resources */,
 				E4E38E461863244900CD85B6 /* scripts.png in Resources */,
-				E4E32548187ACA520081EE04 /* Icon-120.png in Resources */,
 				E4477D15186860D70004799F /* btshareall.png in Resources */,
 				E4477D0018685D130004799F /* 12@2x.png in Resources */,
 				E4477D1218685D130004799F /* 9.2@2x.png in Resources */,
 				E4D5D5DB1861732E004DBE2E /* BackButton.xib in Resources */,
 				E4E38E411863244900CD85B6 /* CellImage@2x.png in Resources */,
 				E4477D0B18685D130004799F /* 5.1@2x.png in Resources */,
-				E4E3254B187ACA520081EE04 /* Icon-50.png in Resources */,
 				E4477CFF18685D130004799F /* 11@2x.png in Resources */,
 				E4477D18186866020004799F /* searchButton.png in Resources */,
 				E4477D0D18685D130004799F /* 6@2x.png in Resources */,
-				E4E32553187ACA520081EE04 /* Icon~ipad.png in Resources */,
 				E4E38E431863244900CD85B6 /* nav@2x.png in Resources */,
-				E4E32552187ACA520081EE04 /* Icon@2x~ipad.png in Resources */,
 				E4E38E3A1863244900CD85B6 /* back-button.png in Resources */,
 				E4E38E361863244900CD85B6 /* ArrowForScrollDown.png in Resources */,
 				E4477D1018685D130004799F /* 8@2x.png in Resources */,
@@ -771,11 +713,18 @@
 		E4D426A2183C67DA00B29596 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: senthilnathan Karuppaiah (7452NP5KW8)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bilbe application/Quest For Bible Verses-Prefix.pch";
 				INFOPLIST_FILE = "Bilbe application/Quest For Bible Verses-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/rahulkumar/Desktop/Manohar/Apps/Bilbe\\ application/BibleApplication/Bilbe\\ application",
+				);
 				PRODUCT_NAME = "Quest For Bible Verses";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -786,11 +735,18 @@
 		E4D426A3183C67DA00B29596 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: senthilnathan Karuppaiah (7452NP5KW8)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bilbe application/Quest For Bible Verses-Prefix.pch";
 				INFOPLIST_FILE = "Bilbe application/Quest For Bible Verses-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/rahulkumar/Desktop/Manohar/Apps/Bilbe\\ application/BibleApplication/Bilbe\\ application",
+				);
 				PRODUCT_NAME = "Quest For Bible Verses";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

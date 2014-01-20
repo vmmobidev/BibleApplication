@@ -12,6 +12,7 @@
 #import "Reachability.h"
 #import "ParseVOTD.h"
 #import "DatabaseManager.h"
+#import "Flurry.h"
 #define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=xml"]
 
 @interface SearchViewController ()
@@ -75,7 +76,18 @@
     
 //    [_serachButton setBackgroundImage:[UIImage imageNamed:@"searchButton.png"] forState:UIControlStateNormal];
     
+    _textFieldForSearching.layer.shadowColor = [UIColor blackColor].CGColor;
+    _textFieldForSearching.layer.shadowOffset = CGSizeMake(2, 2);
+    _textFieldForSearching.layer.shadowOpacity = .8;
+    _textFieldForSearching.layer.shadowRadius = 5.0;
+    _textFieldForSearching.layer.masksToBounds = NO;
     
+    
+    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _imageView.layer.shadowOffset = CGSizeMake(3, 3);
+    _imageView.layer.shadowOpacity = .8;
+    _imageView.layer.shadowRadius = 3.0;
+    _imageView.layer.masksToBounds = NO;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         if ([UIScreen mainScreen].bounds.size.height == 568)
@@ -260,6 +272,7 @@
 
 - (IBAction)searchTheQuery:(id)sender
 {
+    [Flurry logEvent:@"SearchButtonPressed"];
     [_textFieldForSearching resignFirstResponder];
 }
 
@@ -303,13 +316,16 @@
         
         return NO;
     }
-    
+    [Flurry logEvent:@"Sucessful SearchButtonPress"];
+
     return YES;
 }
 
 - (IBAction)returnKeyPressed:(UITextField *)sender
 {
     [sender resignFirstResponder];
+    
+    [Flurry logEvent:@"Enter button pressed"];
     
     NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
     
@@ -343,6 +359,8 @@
         } completion:Nil];
     }else
     {
+        [Flurry logEvent:@"Sucessful enter button press"];
+
         [self performSegueWithIdentifier:@"searchID" sender:self];
 
     }
@@ -451,7 +469,6 @@
     {
         _autocompleteList.hidden = YES;
     }
-    
     return YES;
 }
 
@@ -483,6 +500,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _autocompleteList.hidden = YES;
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    [Flurry logEvent:@"Autocomplete list used"];
     _textFieldForSearching.text = selectedCell.textLabel.text;
 }
 

@@ -8,6 +8,7 @@
 
 #import "TestAppDelegate.h"
 #import "Reachability.h"
+#import "Flurry.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
@@ -23,6 +24,11 @@
     
     Reachability *reach = [Reachability reachabilityWithHostName: @"www.apple.com"];
     [reach startNotifier];
+    
+    
+//Flurry analytics support
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:@"H4YVY5JGMH9YV87HGHSR"];
     
 //    UIImage *barBtn = [[UIImage imageNamed:@"back-button.png"]resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 15.0, 0.0, 6.0)];
 //    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:barBtn forState:UIControlStateNormal

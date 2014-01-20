@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "BackButton.h"
+#import "Flurry.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
@@ -125,6 +126,7 @@
     UIFont *fontForChapters = [UIFont fontWithName:@"Arial" size:18.0];
     UIFont *fontForVerses =[UIFont fontWithName:@"Helvetica Neue" size:12.0];
 
+    [Flurry logEvent:@"Share button pressed"];
     
     NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
     
@@ -182,13 +184,18 @@
         }
         
         if (completed) {
+            [Flurry logEvent:@"Shareing was sucessfull"];
+
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Posted" message:@"Verses is sent sucessfully" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [alert show];
+            
             
             NSLog(@"completed dialog - activity: %@ - finished flag: %d", activityType, completed);
         }
         else
         {
+            [Flurry logEvent:@"Shareing was failure"];
+
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Unable To Share" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [alert show];
             
@@ -254,6 +261,8 @@
     [self.detailView setContentOffset:currentOffset animated:YES];
     
     [self showOrHideScrollButtonsForOffSet:currentOffset];
+    
+    [Flurry logEvent:@"Scroll down button pressed"];
 }
 
 //- (IBAction)scrollDownButtonAction:(UIButton *)sender
