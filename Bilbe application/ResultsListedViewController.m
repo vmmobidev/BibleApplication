@@ -107,6 +107,7 @@
         ParserOfHTML *parser = [[ParserOfHTML alloc] init];
         NSDictionary *dictionaryOfAllResults = [parser parseHTMLstring:mutableString];
         
+        
         arrayOfVerses = dictionaryOfAllResults[@"verses"];
         arrayOfChapter = dictionaryOfAllResults[@"chapters"];
         [self.tableView reloadData];

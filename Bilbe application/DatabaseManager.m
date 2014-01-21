@@ -42,7 +42,8 @@
         {
             while (sqlite3_step(statement) == SQLITE_ROW)
             {
-                NSString *keyWord = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 0)];
+                NSString *keyWordString = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 0)];
+                NSMutableAttributedString *keyWord = [[NSMutableAttributedString alloc] initWithString:keyWordString];
                 [mutableCollectionOfKeyWords addObject:keyWord];
             }
             sqlite3_finalize(statement);

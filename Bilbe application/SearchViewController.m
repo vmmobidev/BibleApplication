@@ -18,6 +18,10 @@
 #import "Flurry.h"
 #define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=xml"]
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface SearchViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *serachButton;
@@ -219,16 +223,14 @@
     [super viewWillAppear:animated];
 //    _activityIndicator.hidden = YES;
 
-    for (NSString *family in [UIFont familyNames])
-    {
-        for (NSString *names in [UIFont fontNamesForFamilyName:family])
-        {
-            NSLog(@"%@ %@", family, names);
-        }
-    }
+//    for (NSString *family in [UIFont familyNames])
+//    {
+//        for (NSString *names in [UIFont fontNamesForFamilyName:family])
+//        {
+//            NSLog(@"%@ %@", family, names);
+//        }
+//    }
 
-    
-    
 }
 
 - (void)getVOTDFromAPI
@@ -327,6 +329,7 @@
 
 - (IBAction)searchTheQuery:(id)sender
 {
+    _autocompleteList.hidden = YES;
     [Flurry logEvent:@"SearchButtonPressed"];
     [_textFieldForSearching resignFirstResponder];
 }
@@ -352,10 +355,10 @@
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
         [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-            _textFieldForSearching.text =@"  Ask somethig here...";
+            _textFieldForSearching.text =@"  Please, ask somethig here...";
         } completion:Nil];
         return NO;
-    }else if ([_textFieldForSearching.text isEqualToString:@"  Ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
+    }else if ([_textFieldForSearching.text isEqualToString:@"  Please, ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
     {
         return NO;
     }else if (stringToBeSent.length == 0)
@@ -365,7 +368,7 @@
         
         [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionAllowAnimatedContent) animations:^{
             _textFieldForSearching.text =@"  Please ask something meaningful...";
-
+            
         } completion:Nil];
 //        _textFieldForSearching.text =@"  Please ask something meaningful...";
         
@@ -401,7 +404,8 @@
         _textFieldForSearching.textColor = [UIColor redColor];
         _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
         [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-            _textFieldForSearching.text =@"  Ask somethig here...";
+            _textFieldForSearching.text =@"  Please, ask somethig here...";
+            _autocompleteList.hidden = YES;
         } completion:Nil];
 
     }else if (stringToBeSent.length == 0)
@@ -415,7 +419,7 @@
     }else
     {
         [Flurry logEvent:@"Sucessful enter button press"];
-
+        _autocompleteList.hidden = YES;
         [self performSegueWithIdentifier:@"searchID" sender:self];
 
     }
@@ -429,6 +433,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    _autocompleteList.hidden = YES;
+    
     if ([segue.identifier isEqualToString:@"searchID"])
     {
         ResultsListedViewController *tableViewController = segue.destinationViewController;
@@ -446,18 +452,70 @@
     NSMutableArray *arryForFirstList = [[NSMutableArray alloc] init];
     NSMutableArray *arrayOfSecondList = [[NSMutableArray alloc] init];
     
-    for (NSString *currentString in arrayOfKeyWords)
+    UIFont *fontForRangeOfSubstring;
+    UIFont *fontForStringExecptSubstring;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
+        fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:20];
+        fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:20];
+    }else
+    {
+        fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
+        fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:18];
+    }
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
         
-        if ( substringRange.location == 0)
+        for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)
         {
-            [arryForFirstList addObject:currentString];
-        } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
+            NSString *currentString = [currentAttributedString string];
+            
+            NSRange rangeOfCurrentString;
+            rangeOfCurrentString.location = 0;
+            rangeOfCurrentString.length = [currentString length];
+            
+            [currentAttributedString addAttribute:UITextAttributeFont value:fontForStringExecptSubstring range:rangeOfCurrentString];
+            
+            NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
+            
+            if ( substringRange.location == 0)
+            {
+                [currentAttributedString addAttribute:UITextAttributeFont value:fontForRangeOfSubstring range:substringRange];
+//                [currentAttributedString setAttributes:@{UITextAttributeFont: fontForRangeOfSubstring} range:substringRange];
+                [arryForFirstList addObject:currentAttributedString];
+            } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
+            {
+                [currentAttributedString addAttribute:UITextAttributeFont value:fontForRangeOfSubstring range:substringRange];
+                [arrayOfSecondList addObject:currentAttributedString];
+            }
+        }
+
+    }else
+    {
+        for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)
         {
-            [arrayOfSecondList addObject:currentString];
+            NSString *currentString = [currentAttributedString string];
+            
+            NSRange rangeOfCurrentString;
+            rangeOfCurrentString.location = 0;
+            rangeOfCurrentString.length = [currentString length];
+            
+            [currentAttributedString addAttribute:NSFontAttributeName value:fontForStringExecptSubstring range:rangeOfCurrentString];
+            
+            NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
+            
+            if ( substringRange.location == 0)
+            {
+                [currentAttributedString addAttribute:NSFontAttributeName value:fontForRangeOfSubstring range:substringRange];
+                [arryForFirstList addObject:currentAttributedString];
+            } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
+            {
+                [currentAttributedString addAttribute:NSFontAttributeName value:fontForRangeOfSubstring range:substringRange];
+                [arrayOfSecondList addObject:currentAttributedString];
+            }
         }
     }
+    
     
     [arryForFirstList addObjectsFromArray:arrayOfSecondList];
     if ([arryForFirstList count] != 0)
@@ -465,7 +523,8 @@
         autoCompleteArray = arryForFirstList;
     } else
     {
-        autoCompleteArray = [@[@"No results found..."] mutableCopy];
+        NSMutableAttributedString *noResultAttributedString =[[NSMutableAttributedString alloc] initWithString:@"No results found..."];
+        autoCompleteArray = [@[noResultAttributedString] mutableCopy];
     }
     
     [self.autocompleteList reloadData];
@@ -507,7 +566,7 @@
 #pragma TExtfield delegte methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if ([_textFieldForSearching.text isEqualToString:@"  Ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
+    if ([_textFieldForSearching.text isEqualToString:@"  Please, ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
     {
         _textFieldForSearching.textColor = [UIColor blackColor];
         _textFieldForSearching.font = fontForTxtFldWhileEditing;
@@ -524,7 +583,9 @@
     _autocompleteList.hidden = NO;
     NSString *subString = [NSString stringWithString:textField.text];
     subString = [subString stringByReplacingCharactersInRange:range withString:string];
+
     [self searchAutocompleteEntriesWithSubstring:subString];
+
     
     if (subString.length == 0)
     {
@@ -553,9 +614,11 @@
     
     //tableView.frame = CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, tableView.contentSize.height);
     
-    if (![(NSString *)[autoCompleteArray objectAtIndex:indexPath.row] isEqualToString:@"No results found..."])
+    NSString *stringForIndex = [[autoCompleteArray objectAtIndex:indexPath.row] string];
+    
+    if (![stringForIndex isEqualToString:@"No results found..."])
     {
-        cell.textLabel.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
+        cell.textLabel.font = [UIFont fontWithName:@"Baskerville-Italic" size:18];
         cell.textLabel.textColor = [UIColor blackColor];
     } else
     {
@@ -563,18 +626,23 @@
         cell.textLabel.textColor = [UIColor redColor];
     }
     
-    cell.textLabel.text = [autoCompleteArray objectAtIndex:indexPath.row];
+    cell.textLabel.attributedText = [autoCompleteArray objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (![(NSString *)[autoCompleteArray objectAtIndex:indexPath.row] isEqualToString:@"No results found..."])
+    
+    NSString *stringForIndex = [[autoCompleteArray objectAtIndex:indexPath.row] string];
+    
+    if (![stringForIndex isEqualToString:@"No results found..."])
     {
         _autocompleteList.hidden = YES;
 
         UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
         [Flurry logEvent:@"Autocomplete list used"];
-        _textFieldForSearching.text = selectedCell.textLabel.text;
+        
+        
+        _textFieldForSearching.text = selectedCell.textLabel.attributedText.string;
     }
 }
 
