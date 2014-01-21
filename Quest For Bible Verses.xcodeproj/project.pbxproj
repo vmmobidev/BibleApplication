@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E417BE5B188D4AD30097B08F /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = E417BE5A188D4AD30097B08F /* Back.png */; };
 		E424E2BB1883B6C700C40E49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E424E2BA1883B6C700C40E49 /* Images.xcassets */; };
 		E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4341D1B186C0D6300995297 /* ParseVOTD.m */; };
 		E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E4341D44186C50C500995297 /* searchButtonInverted.png */; };
@@ -38,6 +39,10 @@
 		E4477D16186860D70004799F /* btshareall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477D14186860D70004799F /* btshareall@2x.png */; };
 		E4477D18186866020004799F /* searchButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477D17186866020004799F /* searchButton.png */; };
 		E44AE36A188CF8A600B2DADF /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44AE369188CF8A600B2DADF /* libFlurry_4.3.1.a */; };
+		E44AE36D188D32F400B2DADF /* Info-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E44AE36B188D32F400B2DADF /* Info-icon.png */; };
+		E44AE36E188D32F400B2DADF /* Info-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E44AE36C188D32F400B2DADF /* Info-icon@2x.png */; };
+		E44AE371188D359D00B2DADF /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44AE370188D359D00B2DADF /* InfoViewController.m */; };
+		E44AE3B9188D3A0F00B2DADF /* vm_logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E44AE3B8188D3A0F00B2DADF /* vm_logo2.png */; };
 		E44C1852187671B500495266 /* nav@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E44C1851187671B500495266 /* nav@2x~ipad.png */; };
 		E44C1854187675E000495266 /* nav~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E44C1853187675E000495266 /* nav~ipad.png */; };
 		E4742A9A1872CC450044E1C7 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4742A991872CC450044E1C7 /* DatabaseManager.m */; };
@@ -52,6 +57,7 @@
 		E4AB7B0C186199D600655F99 /* Mawns_Handwriting.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4AB7B0B186199C400655F99 /* Mawns_Handwriting.ttf */; };
 		E4AB7B0E18619AA700655F99 /* DESYREL_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4AB7B0D18619AA000655F99 /* DESYREL_.ttf */; };
 		E4AB7B201861C7BD00655F99 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AB7B1F1861C7BD00655F99 /* QuartzCore.framework */; };
+		E4B78BBF188E43EC00EBECDB /* iconForShare.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B78BBE188E43EC00EBECDB /* iconForShare.png */; };
 		E4CC1D5A18753DB100C60D49 /* MainStoryboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4CC1D5918753DB100C60D49 /* MainStoryboard-iPad.storyboard */; };
 		E4CC3417185ECBE900B7FB1E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4CC3416185ECBE900B7FB1E /* Security.framework */; };
 		E4CC3419185ECBF800B7FB1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4CC3418185ECBF800B7FB1E /* SystemConfiguration.framework */; };
@@ -105,6 +111,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E417BE5A188D4AD30097B08F /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		E424E2BA1883B6C700C40E49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Quest For Bible Verses/Images.xcassets"; sourceTree = "<group>"; };
 		E4341D1A186C0D6300995297 /* ParseVOTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseVOTD.h; sourceTree = "<group>"; };
 		E4341D1B186C0D6300995297 /* ParseVOTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseVOTD.m; sourceTree = "<group>"; };
@@ -138,6 +145,11 @@
 		E4477D17186866020004799F /* searchButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButton.png; sourceTree = "<group>"; };
 		E44AE368188CF8A600B2DADF /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		E44AE369188CF8A600B2DADF /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
+		E44AE36B188D32F400B2DADF /* Info-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info-icon.png"; sourceTree = "<group>"; };
+		E44AE36C188D32F400B2DADF /* Info-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info-icon@2x.png"; sourceTree = "<group>"; };
+		E44AE36F188D359D00B2DADF /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		E44AE370188D359D00B2DADF /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		E44AE3B8188D3A0F00B2DADF /* vm_logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vm_logo2.png; sourceTree = "<group>"; };
 		E44C1851187671B500495266 /* nav@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav@2x~ipad.png"; sourceTree = "<group>"; };
 		E44C1853187675E000495266 /* nav~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav~ipad.png"; sourceTree = "<group>"; };
 		E4742A981872CC450044E1C7 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseManager.h; path = "Bilbe application/DatabaseManager.h"; sourceTree = SOURCE_ROOT; };
@@ -152,6 +164,7 @@
 		E4AB7B0B186199C400655F99 /* Mawns_Handwriting.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mawns_Handwriting.ttf; sourceTree = "<group>"; };
 		E4AB7B0D18619AA000655F99 /* DESYREL_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DESYREL_.ttf; sourceTree = "<group>"; };
 		E4AB7B1F1861C7BD00655F99 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E4B78BBE188E43EC00EBECDB /* iconForShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconForShare.png; sourceTree = "<group>"; };
 		E4CC1D5918753DB100C60D49 /* MainStoryboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "MainStoryboard-iPad.storyboard"; sourceTree = "<group>"; };
 		E4CC3416185ECBE900B7FB1E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E4CC3418185ECBF800B7FB1E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -332,6 +345,8 @@
 				E4D426A5183C683400B29596 /* ResultsListedViewController.m */,
 				E4D426AC183CBABE00B29596 /* DetailViewController.h */,
 				E4D426AD183CBABE00B29596 /* DetailViewController.m */,
+				E44AE36F188D359D00B2DADF /* InfoViewController.h */,
+				E44AE370188D359D00B2DADF /* InfoViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -440,6 +455,9 @@
 		E4E38E201863244900CD85B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E44AE3B8188D3A0F00B2DADF /* vm_logo2.png */,
+				E4B78BBE188E43EC00EBECDB /* iconForShare.png */,
+				E417BE5A188D4AD30097B08F /* Back.png */,
 				E4477D13186860D70004799F /* btshareall.png */,
 				E4341D44186C50C500995297 /* searchButtonInverted.png */,
 				E4477D14186860D70004799F /* btshareall@2x.png */,
@@ -467,6 +485,8 @@
 				E44C1853187675E000495266 /* nav~ipad.png */,
 				E4E38E2E1863244900CD85B6 /* nav@2x.png */,
 				E44C1851187671B500495266 /* nav@2x~ipad.png */,
+				E44AE36B188D32F400B2DADF /* Info-icon.png */,
+				E44AE36C188D32F400B2DADF /* Info-icon@2x.png */,
 				E4E38E2F1863244900CD85B6 /* pageView.png */,
 				E4E38E301863244900CD85B6 /* pageView@2x.png */,
 				E4E38E311863244900CD85B6 /* scripts.png */,
@@ -549,17 +569,21 @@
 				E4E38E3D1863244900CD85B6 /* background@2x.jpg in Resources */,
 				E4E324A8187A65560081EE04 /* ArrowForScrollUp@2x~ipad.png in Resources */,
 				E4E324A7187A65560081EE04 /* ArrowForScrollDown~ipad.png in Resources */,
+				E44AE3B9188D3A0F00B2DADF /* vm_logo2.png in Resources */,
 				E4477D1118685D130004799F /* 9.1@2x.png in Resources */,
 				E4E38E401863244900CD85B6 /* CellImage.png in Resources */,
 				E4E38E451863244900CD85B6 /* pageView@2x.png in Resources */,
 				E4477CFD18685D130004799F /* 1.2@2x.png in Resources */,
 				E4AB7B081861976000655F99 /* Callie_Hand.otf in Resources */,
+				E417BE5B188D4AD30097B08F /* Back.png in Resources */,
 				E4477D0418685D130004799F /* 14.2@2x.png in Resources */,
 				E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */,
+				E44AE36E188D32F400B2DADF /* Info-icon@2x.png in Resources */,
 				E4477D16186860D70004799F /* btshareall@2x.png in Resources */,
 				E4477D0A18685D130004799F /* 4.2@2x.png in Resources */,
 				E4477D0718685D130004799F /* 3.1@2x.png in Resources */,
 				E4E38E3F1863244900CD85B6 /* bar-button@2x.png in Resources */,
+				E44AE36D188D32F400B2DADF /* Info-icon.png in Resources */,
 				E4477D0218685D130004799F /* 13.2@2x.png in Resources */,
 				E44C1854187675E000495266 /* nav~ipad.png in Resources */,
 				E4477D0618685D130004799F /* 2@2x.png in Resources */,
@@ -587,6 +611,7 @@
 				E4477D15186860D70004799F /* btshareall.png in Resources */,
 				E4477D0018685D130004799F /* 12@2x.png in Resources */,
 				E4477D1218685D130004799F /* 9.2@2x.png in Resources */,
+				E4B78BBF188E43EC00EBECDB /* iconForShare.png in Resources */,
 				E4D5D5DB1861732E004DBE2E /* BackButton.xib in Resources */,
 				E4E38E411863244900CD85B6 /* CellImage@2x.png in Resources */,
 				E4477D0B18685D130004799F /* 5.1@2x.png in Resources */,
@@ -614,6 +639,7 @@
 				E4CC344E185ED27900B7FB1E /* AFNetworkReachabilityManager.m in Sources */,
 				E4CC3453185ED27900B7FB1E /* AFURLSessionManager.m in Sources */,
 				E4D5D5D91861731E004DBE2E /* BackButton.m in Sources */,
+				E44AE371188D359D00B2DADF /* InfoViewController.m in Sources */,
 				E4CC3451185ED27900B7FB1E /* AFURLRequestSerialization.m in Sources */,
 				E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */,
 				E4D4268E183C67DA00B29596 /* main.m in Sources */,

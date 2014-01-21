@@ -345,6 +345,141 @@
             </objects>
             <point key="canvasLocation" x="-48" y="-23"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="3Qg-GX-XrV">
+            <objects>
+                <viewController storyboardIdentifier="InfoViewController" id="Ypp-ha-k4s" customClass="InfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9c3-Sq-HCX"/>
+                        <viewControllerLayoutGuide type="bottom" id="xjW-dE-CoQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rej-HO-UUj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="V2a-fW-ctu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vm_logo2.png" translatesAutoresizingMaskIntoConstraints="NO" id="BJN-Ex-xcj">
+                                <rect key="frame" x="84" y="102" width="152" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Qut-NT-Fog"/>
+                                    <constraint firstAttribute="width" constant="152" id="XxQ-SY-lmZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VMOKSHA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiU-vg-Mve">
+                                <rect key="frame" x="102" y="173" width="117" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="U1I-c0-ZQo"/>
+                                    <constraint firstAttribute="width" constant="117" id="nvx-nc-j5u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quest For Bible Verses (ver 1.0.1)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="206" translatesAutoresizingMaskIntoConstraints="NO" id="TJO-qG-xsQ">
+                                <rect key="frame" x="57" y="241" width="206" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Baskerville-SemiBoldItalic" family="Baskerville" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxX-zP-rVD">
+                                <rect key="frame" x="113" y="350" width="95" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id0-AX-EOg">
+                                <rect key="frame" x="37" y="368" width="247" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Vmoksha Technologies Pvt. Ltd">
+                                    <color key="titleColor" red="0.84814096715328469" green="0.10862619335555876" blue="0.17462127708976544" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzF-al-wrx">
+                                <rect key="frame" x="110" y="465" width="100" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="3Hk-ah-oeC"/>
+                                    <constraint firstAttribute="height" constant="50" id="LNu-FG-XDT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville-SemiBoldItalic" family="Baskerville" pointSize="23"/>
+                                <state key="normal" backgroundImage="Back.png">
+                                    <color key="titleColor" red="1" green="0.97218906088529189" blue="0.94202120739088591" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Ypp-ha-k4s" eventType="touchUpInside" id="RnS-0s-WIR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJf-In-tz6">
+                                <rect key="frame" x="87" y="405" width="147" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Developer Website  >">
+                                    <color key="titleColor" red="0.10252338875561073" green="0.42602515800185525" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestWebsite:" destination="Ypp-ha-k4s" eventType="touchUpInside" id="xnY-Qv-QIK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJc-yf-7Id">
+                                <rect key="frame" x="96" y="435" width="128" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Developer Apps  >">
+                                    <color key="titleColor" red="0.1025233888" green="0.42602515800000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreAppFromDeveloper:" destination="Ypp-ha-k4s" eventType="touchUpInside" id="rdj-cp-vyc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="BJN-Ex-xcj" secondAttribute="centerX" id="0US-sw-7yH"/>
+                            <constraint firstItem="fJc-yf-7Id" firstAttribute="top" secondItem="FJf-In-tz6" secondAttribute="bottom" id="21k-wv-WS6"/>
+                            <constraint firstAttribute="centerX" secondItem="TzF-al-wrx" secondAttribute="centerX" id="44R-2I-9z8"/>
+                            <constraint firstItem="TJO-qG-xsQ" firstAttribute="top" secondItem="BJN-Ex-xcj" secondAttribute="bottom" constant="39" id="5Su-Kf-m6v"/>
+                            <constraint firstAttribute="centerX" secondItem="TJO-qG-xsQ" secondAttribute="centerX" id="5zH-xZ-YjD"/>
+                            <constraint firstItem="V2a-fW-ctu" firstAttribute="leading" secondItem="rej-HO-UUj" secondAttribute="leading" id="9DO-xZ-JEZ"/>
+                            <constraint firstAttribute="centerX" secondItem="FJf-In-tz6" secondAttribute="centerX" id="9Mk-zt-xU1"/>
+                            <constraint firstAttribute="trailing" secondItem="V2a-fW-ctu" secondAttribute="trailing" id="BTD-nR-P0k"/>
+                            <constraint firstItem="id0-AX-EOg" firstAttribute="top" secondItem="LxX-zP-rVD" secondAttribute="bottom" id="EC7-tD-nOf"/>
+                            <constraint firstAttribute="centerX" secondItem="fJc-yf-7Id" secondAttribute="centerX" id="HyD-bz-wB8"/>
+                            <constraint firstAttribute="centerX" secondItem="id0-AX-EOg" secondAttribute="centerX" id="IS4-l8-y1s"/>
+                            <constraint firstItem="TJO-qG-xsQ" firstAttribute="top" secondItem="V2a-fW-ctu" secondAttribute="bottom" constant="-327" id="VFu-kI-FX8"/>
+                            <constraint firstItem="TzF-al-wrx" firstAttribute="top" secondItem="FJf-In-tz6" secondAttribute="bottom" constant="30" id="X7B-Ig-tCA"/>
+                            <constraint firstItem="V2a-fW-ctu" firstAttribute="top" secondItem="rej-HO-UUj" secondAttribute="top" id="YtD-Tl-HF0"/>
+                            <constraint firstAttribute="centerX" secondItem="LxX-zP-rVD" secondAttribute="centerX" id="aUa-0Q-G6Z"/>
+                            <constraint firstItem="LxX-zP-rVD" firstAttribute="top" secondItem="V2a-fW-ctu" secondAttribute="bottom" constant="-218" id="auO-I7-yiC"/>
+                            <constraint firstItem="xjW-dE-CoQ" firstAttribute="top" secondItem="V2a-fW-ctu" secondAttribute="bottom" id="dKs-Li-w8s"/>
+                            <constraint firstItem="KiU-vg-Mve" firstAttribute="top" secondItem="BJN-Ex-xcj" secondAttribute="bottom" constant="-29" id="fsD-hE-aLq"/>
+                            <constraint firstItem="BJN-Ex-xcj" firstAttribute="centerX" secondItem="KiU-vg-Mve" secondAttribute="centerX" constant="-0.5" id="uS6-L2-Wxr"/>
+                            <constraint firstItem="FJf-In-tz6" firstAttribute="top" secondItem="id0-AX-EOg" secondAttribute="bottom" constant="4" id="xIg-8I-pm7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appNameLabel" destination="TJO-qG-xsQ" id="yIO-Ae-dpJ"/>
+                        <outlet property="questLabelToBottomConst" destination="VFu-kI-FX8" id="kYm-JM-uSB"/>
+                        <outlet property="vmLogoToQuestLabelConst" destination="5Su-Kf-m6v" id="qdP-8E-WOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gay-AU-XeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="765"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="SZo-fT-yDn">
             <objects>
@@ -368,6 +503,7 @@
     <resources>
         <image name="ArrowForScrollDown.png" width="100" height="20"/>
         <image name="ArrowForScrollUp.png" width="100" height="20"/>
+        <image name="Back.png" width="146" height="78"/>
         <image name="CellImage.png" width="156" height="28"/>
         <image name="background.jpg" width="320" height="568"/>
         <image name="btshareall.png" width="56" height="60"/>
@@ -375,6 +511,7 @@
         <image name="scripts.png" width="320" height="250"/>
         <image name="searchButton.png" width="500" height="100"/>
         <image name="searchButtonInverted.png" width="500" height="100"/>
+        <image name="vm_logo2.png" width="116" height="71"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

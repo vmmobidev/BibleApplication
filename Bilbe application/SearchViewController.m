@@ -6,7 +6,10 @@
 //  Copyright (c) 2013 Vmoksha. All rights reserved.
 //
 
+
 #import "SearchViewController.h"
+#import "TestAppDelegate.h"
+#import "InfoViewController.h"
 #import "ResultsListedViewController.h"
 #import "AFNetworking.h"
 #import "Reachability.h"
@@ -20,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *serachButton;
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
+@property (nonatomic, strong) UIPopoverController *popoverViewController;
 
 @end
 
@@ -31,6 +35,8 @@
     UIFont *fontForTxtFldWhileEditing;
     NSMutableArray *autoCompleteArray;
     NSArray *arrayOfKeyWords;
+    
+    UIBarButtonItem *infoBarButton;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,7 +49,53 @@
     
 }
 
+- (void)loadView
+{
+    [super loadView];
 
+    UIButton *infoButton;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+         infoButton = [[UIButton alloc] initWithFrame:(CGRectMake(0, 0, 25, 25))];
+        [infoButton addTarget:self action:@selector(infoButtonPressed:) forControlEvents:(UIControlEventTouchUpInside)];
+    } else
+    {
+        infoButton = [[UIButton alloc] initWithFrame:(CGRectMake(0, 0, 30, 30))];
+        [infoButton addTarget:self action:@selector(infoButtonForIpadPressed:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    
+    [infoButton setImage:[UIImage imageNamed:@"Info-icon.png"] forState:(UIControlStateNormal)];
+    
+    infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    self.navigationItem.rightBarButtonItem = infoBarButton;
+}
+
+- (void)infoButtonPressed:(UIButton *)sender
+{
+//    TestAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    
+    InfoViewController *infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
+    
+    [self presentViewController:infoController animated:YES completion:Nil];
+}
+
+- (void)infoButtonForIpadPressed:(UIButton *)sender
+{
+    InfoViewController *infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
+    
+    if (!_popoverViewController)
+    {
+        _popoverViewController = [[UIPopoverController alloc] initWithContentViewController:infoController];
+    }
+    if (_popoverViewController.isPopoverVisible)
+    {
+        [_popoverViewController dismissPopoverAnimated:YES];
+    }else
+        [_popoverViewController presentPopoverFromBarButtonItem:infoBarButton permittedArrowDirections:(UIPopoverArrowDirectionUp) animated:YES];
+
+  
+
+}
 
 - (void)viewDidLoad
 {
@@ -160,20 +212,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    _imageView.animationImages = nil;
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 //    _activityIndicator.hidden = YES;
 
-//    for (NSString *family in [UIFont familyNames])
-//    {
-//        for (NSString *names in [UIFont fontNamesForFamilyName:family])
-//        {
-//            NSLog(@"%@ %@", family, names);
-//        }
-//    }
+    for (NSString *family in [UIFont familyNames])
+    {
+        for (NSString *names in [UIFont fontNamesForFamilyName:family])
+        {
+            NSLog(@"%@ %@", family, names);
+        }
+    }
 
+    
+    
 }
 
 - (void)getVOTDFromAPI
@@ -405,7 +460,13 @@
     }
     
     [arryForFirstList addObjectsFromArray:arrayOfSecondList];
-    autoCompleteArray = arryForFirstList;
+    if ([arryForFirstList count] != 0)
+    {
+        autoCompleteArray = arryForFirstList;
+    } else
+    {
+        autoCompleteArray = [@[@"No results found..."] mutableCopy];
+    }
     
     [self.autocompleteList reloadData];
     [_autocompleteList setContentOffset:(CGPointZero)];
@@ -492,16 +553,29 @@
     
     //tableView.frame = CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, tableView.contentSize.height);
     
-    cell.textLabel.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
+    if (![(NSString *)[autoCompleteArray objectAtIndex:indexPath.row] isEqualToString:@"No results found..."])
+    {
+        cell.textLabel.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
+        cell.textLabel.textColor = [UIColor blackColor];
+    } else
+    {
+        cell.textLabel.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:16];
+        cell.textLabel.textColor = [UIColor redColor];
+    }
+    
     cell.textLabel.text = [autoCompleteArray objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _autocompleteList.hidden = YES;
-    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    [Flurry logEvent:@"Autocomplete list used"];
-    _textFieldForSearching.text = selectedCell.textLabel.text;
+    if (![(NSString *)[autoCompleteArray objectAtIndex:indexPath.row] isEqualToString:@"No results found..."])
+    {
+        _autocompleteList.hidden = YES;
+
+        UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        [Flurry logEvent:@"Autocomplete list used"];
+        _textFieldForSearching.text = selectedCell.textLabel.text;
+    }
 }
 
 @end

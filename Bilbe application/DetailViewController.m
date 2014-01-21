@@ -123,22 +123,26 @@
 
 - (IBAction)shareBtnAction:(UIButton *)sender
 {
-    UIFont *fontForChapters = [UIFont fontWithName:@"Arial" size:18.0];
+    UIFont *fontForChapters = [UIFont fontWithName:@"Arial-BoldItalicMT" size:18.0];
     UIFont *fontForVerses =[UIFont fontWithName:@"Helvetica Neue" size:12.0];
 
     [Flurry logEvent:@"Share button pressed"];
     
     NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
     
-    NSMutableAttributedString *attributeStrForChapters = [[NSMutableAttributedString alloc] initWithString:self.verse.chapter attributes:@{NSFontAttributeName:fontForChapters,NSParagraphStyleAttributeName:paragraph, NSForegroundColorAttributeName: [UIColor redColor]}];
+    NSMutableAttributedString *attributeStrForChapters = [[NSMutableAttributedString alloc] initWithString:self.verse.chapter attributes:@{NSFontAttributeName:fontForChapters,NSParagraphStyleAttributeName:paragraph, NSForegroundColorAttributeName: [UIColor blackColor]}];
     
     NSMutableAttributedString *attributeStrForVerses = [[NSMutableAttributedString alloc] initWithString:self.verse.verse attributes:@{NSFontAttributeName:fontForVerses,NSParagraphStyleAttributeName:paragraph}];
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"\n"];
     [attributeStrForChapters appendAttributedString:attributedString];
     
     [attributeStrForChapters appendAttributedString:attributeStrForVerses];
+    UIImage *appIconImage = [UIImage imageNamed:@"iconForShare.png"];
+    NSMutableAttributedString *attributedAppLink = [[NSMutableAttributedString alloc] initWithString:@"\n\n  Quest for Bible Verse (iPhone/iPad)\n https://itunes.apple.com/in/app/quest-for-bible-verses/id796303032?mt=8"];
     
-    NSArray *dataToShare = @[attributeStrForChapters];
+    [attributeStrForChapters appendAttributedString:attributedAppLink];
+    
+    NSArray *dataToShare = @[attributeStrForChapters,appIconImage];
     UIActivityViewController *activityView =[[UIActivityViewController alloc]initWithActivityItems:dataToShare applicationActivities:Nil];
     activityView.excludedActivityTypes = @[UIActivityTypePrint,UIActivityTypeCopyToPasteboard];
     
