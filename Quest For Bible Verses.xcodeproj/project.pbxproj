@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E417BE5B188D4AD30097B08F /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = E417BE5A188D4AD30097B08F /* Back.png */; };
+		E424BC50188E938A008ADC25 /* ErrorMsgBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E424BC4F188E938A008ADC25 /* ErrorMsgBackground@2x.png */; };
 		E424E2BB1883B6C700C40E49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E424E2BA1883B6C700C40E49 /* Images.xcassets */; };
 		E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4341D1B186C0D6300995297 /* ParseVOTD.m */; };
 		E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E4341D44186C50C500995297 /* searchButtonInverted.png */; };
@@ -112,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		E417BE5A188D4AD30097B08F /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		E424BC4F188E938A008ADC25 /* ErrorMsgBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ErrorMsgBackground@2x.png"; sourceTree = "<group>"; };
 		E424E2BA1883B6C700C40E49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Quest For Bible Verses/Images.xcassets"; sourceTree = "<group>"; };
 		E4341D1A186C0D6300995297 /* ParseVOTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseVOTD.h; sourceTree = "<group>"; };
 		E4341D1B186C0D6300995297 /* ParseVOTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseVOTD.m; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 		E4E38E201863244900CD85B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E424BC4F188E938A008ADC25 /* ErrorMsgBackground@2x.png */,
 				E44AE3B8188D3A0F00B2DADF /* vm_logo2.png */,
 				E4B78BBE188E43EC00EBECDB /* iconForShare.png */,
 				E417BE5A188D4AD30097B08F /* Back.png */,
@@ -592,6 +595,7 @@
 				E4477D0518685D130004799F /* 15@2x.png in Resources */,
 				E44C1852187671B500495266 /* nav@2x~ipad.png in Resources */,
 				E4477D0818685D130004799F /* 3.2@2x.png in Resources */,
+				E424BC50188E938A008ADC25 /* ErrorMsgBackground@2x.png in Resources */,
 				E4477D0918685D130004799F /* 4.1@2x.png in Resources */,
 				E4E38E471863244900CD85B6 /* scripts@2x.png in Resources */,
 				E4477D0118685D130004799F /* 13.1@2x.png in Resources */,

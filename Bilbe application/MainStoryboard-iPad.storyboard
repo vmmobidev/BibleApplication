@@ -300,10 +300,41 @@
                                     <outlet property="delegate" destination="etc-Jf-hva" id="PBY-9y-ump"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpX-Qp-FwJ">
+                                <rect key="frame" x="203" y="62" width="362" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ErrorMsgBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="zzm-lG-BcL">
+                                        <rect key="frame" x="0.0" y="0.0" width="363" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otd-F1-ya4">
+                                        <rect key="frame" x="0.0" y="1" width="362" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Sorry,I couldn’t find any related verses">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.039215686274509803" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="LucidaGrande-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="362" id="7Zt-4B-MQn"/>
+                                    <constraint firstAttribute="height" constant="49" id="Tj1-Ce-v7n"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Xlg-4A-HvH" firstAttribute="leading" secondItem="1Ka-ed-xxY" secondAttribute="leading" constant="84" id="4Kt-PH-LCI"/>
+                            <constraint firstItem="GpX-Qp-FwJ" firstAttribute="top" secondItem="I9W-ta-e8G" secondAttribute="bottom" constant="-962" id="59z-YO-2fZ"/>
+                            <constraint firstAttribute="centerX" secondItem="GpX-Qp-FwJ" secondAttribute="centerX" id="6pm-u6-c6T"/>
                             <constraint firstAttribute="centerX" secondItem="J79-wE-LU2" secondAttribute="centerX" id="9w4-6z-Qc9"/>
                             <constraint firstItem="8VI-pL-Epe" firstAttribute="top" secondItem="Xlg-4A-HvH" secondAttribute="bottom" constant="-555" id="BCA-aY-pZ8"/>
                             <constraint firstItem="2ui-Vw-DlV" firstAttribute="leading" secondItem="Xlg-4A-HvH" secondAttribute="trailing" constant="-472" id="Ghp-lt-vWl"/>
@@ -336,6 +367,7 @@
                         <outlet property="imageView" destination="Xlg-4A-HvH" id="lCF-gm-Wgk"/>
                         <outlet property="serachButton" destination="J79-wE-LU2" id="7lO-4q-h6K"/>
                         <outlet property="textFieldForSearching" destination="if7-4X-aei" id="wzO-Xz-Qt9"/>
+                        <outlet property="warningMessageView" destination="GpX-Qp-FwJ" id="IJw-nx-V2t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bop-Re-CT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,6 +518,7 @@
         <image name="ArrowForScrollDown.png" width="260" height="45"/>
         <image name="ArrowForScrollUp.png" width="260" height="45"/>
         <image name="CellImage.png" width="156" height="28"/>
+        <image name="ErrorMsgBackground.png" width="264" height="67"/>
         <image name="background.jpg" width="768" height="1024"/>
         <image name="btshareall.png" width="56" height="60"/>
         <image name="pageView.png" width="285" height="388"/>

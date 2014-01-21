@@ -25,6 +25,7 @@
 @interface SearchViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *serachButton;
+@property (weak, nonatomic) IBOutlet UIView *warningMessageView;
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
 @property (nonatomic, strong) UIPopoverController *popoverViewController;
@@ -230,6 +231,9 @@
 //            NSLog(@"%@ %@", family, names);
 //        }
 //    }
+    
+    _warningMessageView.alpha = 0.0f;
+    _warningMessageView.hidden = YES;
 
 }
 
@@ -374,6 +378,24 @@
         
         return NO;
     }
+    BOOL occuranceOfStringInArray = NO;
+    for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
+    {
+        NSString *currentString = [attributedString string];
+        
+        if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
+        {
+            occuranceOfStringInArray = YES;
+            break;
+        }
+    }
+    
+    if (!occuranceOfStringInArray)
+    {
+        [self showWarningMessageWithAutoCompleteList:YES];
+        return NO;
+    }
+    
     [Flurry logEvent:@"Sucessful SearchButtonPress"];
 
     return YES;
@@ -418,10 +440,29 @@
         } completion:Nil];
     }else
     {
-        [Flurry logEvent:@"Sucessful enter button press"];
-        _autocompleteList.hidden = YES;
-        [self performSegueWithIdentifier:@"searchID" sender:self];
+        BOOL occuranceOfStringInArray = NO;
+        for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
+        {
+            NSString *currentString = [attributedString string];
+            
+            if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
+            {
+                occuranceOfStringInArray = YES;
+                break;
+            }
+        }
+        
+        if (!occuranceOfStringInArray)
+        {
+            [self showWarningMessageWithAutoCompleteList:YES];
+        } else
+        {
+            
+            [Flurry logEvent:@"Sucessful enter button press"];
+            _autocompleteList.hidden = YES;
+            [self performSegueWithIdentifier:@"searchID" sender:self];
 
+        }
     }
 }
 
@@ -644,6 +685,24 @@
         
         _textFieldForSearching.text = selectedCell.textLabel.attributedText.string;
     }
+}
+
+- (void)showWarningMessageWithAutoCompleteList:(BOOL)hidden
+{
+    _warningMessageView.hidden = NO;
+    [UIView animateWithDuration:.5 animations:^{
+        _warningMessageView.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:.5 delay:1 options:(UIViewAnimationOptionCurveLinear)| UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _warningMessageView.alpha = 0;
+        } completion:^(BOOL finished) {
+            _warningMessageView.hidden = YES;
+        }];
+        
+    }];
+    
+    _autocompleteList.hidden = hidden;
 }
 
 @end
