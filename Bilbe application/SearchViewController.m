@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *serachButton;
 @property (weak, nonatomic) IBOutlet UIView *warningMessageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *warnigViewTopConst;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *warnigViewHeightConst;
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
 @property (nonatomic, strong) UIPopoverController *popoverViewController;
@@ -139,12 +141,8 @@
     _textFieldForSearching.layer.shadowRadius = 5.0;
     _textFieldForSearching.layer.masksToBounds = NO;
     
-    
-    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _imageView.layer.shadowOffset = CGSizeMake(3, 3);
-    _imageView.layer.shadowOpacity = .8;
-    _imageView.layer.shadowRadius = 3.0;
-    _imageView.layer.masksToBounds = NO;
+
+
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         if ([UIScreen mainScreen].bounds.size.height == 568)
@@ -156,8 +154,16 @@
         if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
         {
             _serachFieldTopConst.constant = 20.0f;
+            _warnigViewTopConst.constant = 0.0f;
+//            _warnigViewHeightConst.constant = 45;
+
         } else
         {
+            _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+            _imageView.layer.shadowOffset = CGSizeMake(3, 3);
+            _imageView.layer.shadowOpacity = .8;
+            _imageView.layer.shadowRadius = 3.0;
+            _imageView.layer.masksToBounds = NO;
         }
     }
     
@@ -504,7 +510,7 @@
         fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
         fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:18];
     }
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
     {
         
         for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)

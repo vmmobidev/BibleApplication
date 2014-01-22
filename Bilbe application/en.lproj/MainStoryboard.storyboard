@@ -300,7 +300,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7z-SY-4Rb">
-                                <rect key="frame" x="46" y="62" width="228" height="35"/>
+                                <rect key="frame" x="46" y="64" width="228" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ErrorMsgBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="qci-Lp-bKP">
@@ -308,7 +308,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="j0B-bC-XDN">
-                                        <rect key="frame" x="2" y="0.0" width="228" height="35"/>
+                                        <rect key="frame" x="2" y="-3" width="228" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Sorry,I couldn’t find any related verses">
@@ -326,8 +326,8 @@
                                 <constraints>
                                     <constraint firstItem="j0B-bC-XDN" firstAttribute="leading" secondItem="m7z-SY-4Rb" secondAttribute="leading" constant="2" id="WKw-2E-Cg8"/>
                                     <constraint firstItem="j0B-bC-XDN" firstAttribute="height" secondItem="m7z-SY-4Rb" secondAttribute="height" id="cVV-6q-vID"/>
-                                    <constraint firstAttribute="height" constant="35" id="e4D-rQ-wHl"/>
-                                    <constraint firstItem="j0B-bC-XDN" firstAttribute="top" secondItem="m7z-SY-4Rb" secondAttribute="top" id="fXi-pm-Nnr"/>
+                                    <constraint firstAttribute="height" constant="40" id="e4D-rQ-wHl"/>
+                                    <constraint firstItem="j0B-bC-XDN" firstAttribute="top" secondItem="m7z-SY-4Rb" secondAttribute="top" constant="-3" id="fXi-pm-Nnr"/>
                                     <constraint firstAttribute="width" constant="228" id="rdd-rk-2CJ"/>
                                     <constraint firstItem="j0B-bC-XDN" firstAttribute="width" secondItem="m7z-SY-4Rb" secondAttribute="width" id="x1P-dU-ocw"/>
                                 </constraints>
@@ -339,7 +339,7 @@
                             <constraint firstItem="iFx-5X-P0y" firstAttribute="centerX" secondItem="5Jl-jx-IZN" secondAttribute="centerX" id="3kM-s7-j5o"/>
                             <constraint firstItem="Tpe-Xz-Iyj" firstAttribute="top" secondItem="6Uy-Hn-rMn" secondAttribute="bottom" constant="6" id="4XZ-ik-fSW"/>
                             <constraint firstAttribute="trailing" secondItem="5Jl-jx-IZN" secondAttribute="trailing" id="4zj-vP-Ygx"/>
-                            <constraint firstItem="m7z-SY-4Rb" firstAttribute="top" secondItem="suU-kT-tIE" secondAttribute="top" constant="62" id="EWE-VC-Pfp"/>
+                            <constraint firstItem="m7z-SY-4Rb" firstAttribute="top" secondItem="suU-kT-tIE" secondAttribute="top" constant="64" id="EWE-VC-Pfp"/>
                             <constraint firstItem="5Jl-jx-IZN" firstAttribute="leading" secondItem="J69-Ih-qgW" secondAttribute="trailing" constant="-320" id="FiI-BN-9D4"/>
                             <constraint firstItem="vfB-RV-rgC" firstAttribute="top" secondItem="5Jl-jx-IZN" secondAttribute="bottom" id="GKs-2w-qmq"/>
                             <constraint firstAttribute="centerX" secondItem="m7z-SY-4Rb" secondAttribute="centerX" id="IiO-uq-WJl"/>
@@ -374,6 +374,8 @@
                         <outlet property="serachButton" destination="iFx-5X-P0y" id="5hU-3k-nQx"/>
                         <outlet property="serachFieldTopConst" destination="h1h-Pj-7pC" id="Z3u-ar-Hkm"/>
                         <outlet property="textFieldForSearching" destination="cI9-Ed-MvR" id="5or-Tn-uPA"/>
+                        <outlet property="warnigViewHeightConst" destination="e4D-rQ-wHl" id="Xf9-6o-A8B"/>
+                        <outlet property="warnigViewTopConst" destination="EWE-VC-Pfp" id="PFU-xJ-JhF"/>
                         <outlet property="warningMessageView" destination="m7z-SY-4Rb" id="uHv-6o-J19"/>
                     </connections>
                 </viewController>
