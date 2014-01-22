@@ -110,6 +110,7 @@
 		E4E38E451863244900CD85B6 /* pageView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E38E301863244900CD85B6 /* pageView@2x.png */; };
 		E4E38E461863244900CD85B6 /* scripts.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E38E311863244900CD85B6 /* scripts.png */; };
 		E4E38E471863244900CD85B6 /* scripts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E38E321863244900CD85B6 /* scripts@2x.png */; };
+		E4EB5076188FBCB500D6260A /* AutoCompleteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB5075188FBCB500D6260A /* AutoCompleteManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +243,8 @@
 		E4E38E301863244900CD85B6 /* pageView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageView@2x.png"; sourceTree = "<group>"; };
 		E4E38E311863244900CD85B6 /* scripts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scripts.png; sourceTree = "<group>"; };
 		E4E38E321863244900CD85B6 /* scripts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scripts@2x.png"; sourceTree = "<group>"; };
+		E4EB5074188FBCB500D6260A /* AutoCompleteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteManager.h; sourceTree = "<group>"; };
+		E4EB5075188FBCB500D6260A /* AutoCompleteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +342,8 @@
 				E4341D1B186C0D6300995297 /* ParseVOTD.m */,
 				E43D251D188F7C8800D207C9 /* SearchManager.h */,
 				E43D251E188F7C8800D207C9 /* SearchManager.m */,
+				E4EB5074188FBCB500D6260A /* AutoCompleteManager.h */,
+				E4EB5075188FBCB500D6260A /* AutoCompleteManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -646,6 +651,7 @@
 				E4CC3450185ED27900B7FB1E /* AFURLConnectionOperation.m in Sources */,
 				E4CC344B185ED27900B7FB1E /* AFHTTPRequestOperation.m in Sources */,
 				E4CC344E185ED27900B7FB1E /* AFNetworkReachabilityManager.m in Sources */,
+				E4EB5076188FBCB500D6260A /* AutoCompleteManager.m in Sources */,
 				E43D251F188F7C8800D207C9 /* SearchManager.m in Sources */,
 				E4CC3453185ED27900B7FB1E /* AFURLSessionManager.m in Sources */,
 				E4D5D5D91861731E004DBE2E /* BackButton.m in Sources */,

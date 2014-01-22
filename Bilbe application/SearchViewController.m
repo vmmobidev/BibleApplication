@@ -16,6 +16,7 @@
 #import "ParseVOTD.h"
 #import "DatabaseManager.h"
 #import "Flurry.h"
+#import "AutoCompleteManager.h"
 
 #define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=xml"]
 
@@ -33,6 +34,7 @@
 @property (nonatomic) Reachability *internetReachability;
 @property (nonatomic, strong) UIPopoverController *popoverViewController;
 @property (nonatomic, strong) SearchManager *searchManager;
+@property (nonatomic, strong) AutoCompleteManager *autoCompleteManager;
 
 @end
 
@@ -104,6 +106,15 @@
 
   
 
+}
+
+- (AutoCompleteManager *)autoCompleteManager
+{
+    if (!_autoCompleteManager)
+    {
+        _autoCompleteManager = [[AutoCompleteManager alloc] init];
+    }
+    return _autoCompleteManager;
 }
 
 - (void)viewDidLoad
@@ -272,44 +283,6 @@
         
         ParseVOTD *parserForVODT = [[ParseVOTD alloc] init];
         NSDictionary *dictionaryOfVerse = [parserForVODT getVOTDForData:data];
-        //
-        //        NSError *error = nil;
-        //        NSArray *parsedOutput = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        //
-        //        if (error)
-        //        {
-        //            NSLog(@"%@: %@",error, [error userInfo]);
-        //
-        //        } else
-        //        {
-        //            NSDictionary *dictonaryFromJson = parsedOutput[0];
-        //            NSString *chapther = [NSString stringWithFormat:@"%@ %@:%@", dictonaryFromJson[@"bookname"], dictonaryFromJson[@"chapter"], dictonaryFromJson[@"verse"]];
-        //
-        //
-        //            NSMutableString *verseOfTheDay = [dictonaryFromJson[@"text"] mutableCopy];
-        //
-        //            while (1)
-        //            {
-        //                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"<b>"];
-        //
-        //                if (rangeForRemoving.location != NSNotFound)
-        //                {
-        //                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
-        //                }else
-        //                    break;
-        //            }
-        //
-        //            while (1)
-        //            {
-        //                NSRange rangeForRemoving = [verseOfTheDay rangeOfString:@"</b>"];
-        //
-        //                if (rangeForRemoving.location != NSNotFound)
-        //                {
-        //                    [verseOfTheDay deleteCharactersInRange:rangeForRemoving];
-        //                }else
-        //                    break;
-        //            }
-        
         
         _verseOfTheDay.chapter = dictionaryOfVerse[@"chapter"];
         _verseOfTheDay.verse = dictionaryOfVerse[@"verse"];
@@ -361,64 +334,6 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-//    NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
-////remove special characters
-//    if (!stringToBeSent)
-//    {
-//        stringToBeSent = [[NSString alloc] init];
-//    }
-//    
-//    NSMutableCharacterSet *charactherSet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
-//    [charactherSet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
-//    charactherSet = [[charactherSet invertedSet] mutableCopy];
-//    
-//    stringToBeSent = [[_textFieldForSearching.text componentsSeparatedByCharactersInSet:charactherSet] componentsJoinedByString:@""];
-//    
-//    
-//    if ([stringForTrimming stringByTrimmingCharactersInSet:([NSCharacterSet whitespaceAndNewlineCharacterSet])].length == 0)
-//    {
-//        _textFieldForSearching.textColor = [UIColor redColor];
-//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-//            _textFieldForSearching.text =@"  Please ask somethig here...";
-//        } completion:Nil];
-//        return NO;
-//    }else if ([_textFieldForSearching.text isEqualToString:@"  Please ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
-//    {
-//        return NO;
-//    }else if (stringToBeSent.length == 0)
-//    {
-//        _textFieldForSearching.textColor = [UIColor redColor];
-//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-//        
-//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionAllowAnimatedContent) animations:^{
-//            _textFieldForSearching.text =@"  Please ask something meaningful...";
-//            
-//        } completion:Nil];
-//
-//        return NO;
-//    }
-//    BOOL occuranceOfStringInArray = NO;
-//    for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
-//    {
-//        NSString *currentString = [attributedString string];
-//        
-//        if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
-//        {
-//            occuranceOfStringInArray = YES;
-//            break;
-//        }
-//    }
-//    
-//    if (!occuranceOfStringInArray)
-//    {
-//        [self showWarningMessageWithAutoCompleteList:YES];
-//        return NO;
-//    }
-//    
-//    [Flurry logEvent:@"Sucessful SearchButtonPress"];
-//
-//    return YES;
     
     
     NSDictionary *dictionaryOfResults = [self.searchManager searchResultsForString:_textFieldForSearching.text];
@@ -459,63 +374,6 @@
     
     [Flurry logEvent:@"Enter button pressed"];
     
-//    NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
-//    
-//    if (!stringToBeSent)
-//    {
-//        stringToBeSent = [[NSString alloc] init];
-//    }
-//    
-//    NSMutableCharacterSet *charactherSet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
-//    [charactherSet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
-//    charactherSet = [[charactherSet invertedSet] mutableCopy];
-//    
-//    stringToBeSent = [[_textFieldForSearching.text componentsSeparatedByCharactersInSet:charactherSet] componentsJoinedByString:@""];
-//
-//
-//    if ([stringForTrimming stringByTrimmingCharactersInSet:([NSCharacterSet whitespaceAndNewlineCharacterSet])].length == 0)
-//    {
-//        _textFieldForSearching.textColor = [UIColor redColor];
-//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-//            _textFieldForSearching.text =@"  Please ask somethig here...";
-//            _autocompleteList.hidden = YES;
-//        } completion:Nil];
-//
-//    }else if (stringToBeSent.length == 0)
-//    {
-//        _textFieldForSearching.textColor = [UIColor redColor];
-//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-//            _textFieldForSearching.text =@"  Please ask something meaningful...";
-//            
-//        } completion:Nil];
-//    }else
-//    {
-//        BOOL occuranceOfStringInArray = NO;
-//        for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
-//        {
-//            NSString *currentString = [attributedString string];
-//            
-//            if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
-//            {
-//                occuranceOfStringInArray = YES;
-//                break;
-//            }
-//        }
-//        
-//        if (!occuranceOfStringInArray)
-//        {
-//            [self showWarningMessageWithAutoCompleteList:YES];
-//        } else
-//        {
-//            
-//            [Flurry logEvent:@"Sucessful enter button press"];
-//            _autocompleteList.hidden = YES;
-//            [self performSegueWithIdentifier:@"searchID" sender:self];
-//
-//        }
-//    }
     
     NSDictionary *dictionaryOfResults = [self.searchManager searchResultsForString:_textFieldForSearching.text];
     
@@ -553,111 +411,114 @@
 {
     [autoCompleteArray removeAllObjects];
     
-    NSMutableArray *arryForFirstList = [[NSMutableArray alloc] init];
-    NSMutableArray *arrayOfSecondList = [[NSMutableArray alloc] init];
-    
-    UIFont *fontForRangeOfSubstring;
-    UIFont *fontForStringExecptSubstring;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-        fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:20];
-        fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:20];
-    }else
-    {
-        fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
-        fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:18];
-    }
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
-    {
-        
-        for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)
-        {
-            NSString *currentString = [currentAttributedString string];
-            
-            NSRange rangeOfCurrentString;
-            rangeOfCurrentString.location = 0;
-            rangeOfCurrentString.length = [currentString length];
-            
-            [currentAttributedString addAttribute:UITextAttributeFont value:fontForStringExecptSubstring range:rangeOfCurrentString];
-            
-            NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
-            
-            if ( substringRange.location == 0)
-            {
-                [currentAttributedString addAttribute:UITextAttributeFont value:fontForRangeOfSubstring range:substringRange];
-//                [currentAttributedString setAttributes:@{UITextAttributeFont: fontForRangeOfSubstring} range:substringRange];
-                [arryForFirstList addObject:currentAttributedString];
-            } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
-            {
-                [currentAttributedString addAttribute:UITextAttributeFont value:fontForRangeOfSubstring range:substringRange];
-                [arrayOfSecondList addObject:currentAttributedString];
-            }
-        }
-
-    }else
-    {
-        for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)
-        {
-            NSString *currentString = [currentAttributedString string];
-            
-            NSRange rangeOfCurrentString;
-            rangeOfCurrentString.location = 0;
-            rangeOfCurrentString.length = [currentString length];
-            
-            [currentAttributedString addAttribute:NSFontAttributeName value:fontForStringExecptSubstring range:rangeOfCurrentString];
-            
-            NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
-            
-            if ( substringRange.location == 0)
-            {
-                [currentAttributedString addAttribute:NSFontAttributeName value:fontForRangeOfSubstring range:substringRange];
-                [arryForFirstList addObject:currentAttributedString];
-            } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
-            {
-                [currentAttributedString addAttribute:NSFontAttributeName value:fontForRangeOfSubstring range:substringRange];
-                [arrayOfSecondList addObject:currentAttributedString];
-            }
-        }
-    }
-    
-    
-    [arryForFirstList addObjectsFromArray:arrayOfSecondList];
-    if ([arryForFirstList count] != 0)
-    {
-        autoCompleteArray = arryForFirstList;
-    } else
-    {
-        NSMutableAttributedString *noResultAttributedString =[[NSMutableAttributedString alloc] initWithString:@"No results found..."];
-        autoCompleteArray = [@[noResultAttributedString] mutableCopy];
-    }
+//    NSMutableArray *arryForFirstList = [[NSMutableArray alloc] init];
+//    NSMutableArray *arrayOfSecondList = [[NSMutableArray alloc] init];
+//    
+//    UIFont *fontForRangeOfSubstring;
+//    UIFont *fontForStringExecptSubstring;
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+//    {
+//        fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:20];
+//        fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:20];
+//    }else
+//    {
+//        fontForRangeOfSubstring = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:18];
+//        fontForStringExecptSubstring = [UIFont fontWithName:@"Baskerville-Italic" size:18];
+//    }
+//    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
+//    {
+//        
+//        for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)
+//        {
+//            NSString *currentString = [currentAttributedString string];
+//            
+//            NSRange rangeOfCurrentString;
+//            rangeOfCurrentString.location = 0;
+//            rangeOfCurrentString.length = [currentString length];
+//            
+//            [currentAttributedString addAttribute:UITextAttributeFont value:fontForStringExecptSubstring range:rangeOfCurrentString];
+//            
+//            NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
+//            
+//            if ( substringRange.location == 0)
+//            {
+//                [currentAttributedString addAttribute:UITextAttributeFont value:fontForRangeOfSubstring range:substringRange];
+////                [currentAttributedString setAttributes:@{UITextAttributeFont: fontForRangeOfSubstring} range:substringRange];
+//                [arryForFirstList addObject:currentAttributedString];
+//            } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
+//            {
+//                [currentAttributedString addAttribute:UITextAttributeFont value:fontForRangeOfSubstring range:substringRange];
+//                [arrayOfSecondList addObject:currentAttributedString];
+//            }
+//        }
+//
+//    }else
+//    {
+//        for (NSMutableAttributedString *currentAttributedString in arrayOfKeyWords)
+//        {
+//            NSString *currentString = [currentAttributedString string];
+//            
+//            NSRange rangeOfCurrentString;
+//            rangeOfCurrentString.location = 0;
+//            rangeOfCurrentString.length = [currentString length];
+//            
+//            [currentAttributedString addAttribute:NSFontAttributeName value:fontForStringExecptSubstring range:rangeOfCurrentString];
+//            
+//            NSRange substringRange = [currentString rangeOfString:substring options:NSCaseInsensitiveSearch];
+//            
+//            if ( substringRange.location == 0)
+//            {
+//                [currentAttributedString addAttribute:NSFontAttributeName value:fontForRangeOfSubstring range:substringRange];
+//                [arryForFirstList addObject:currentAttributedString];
+//            } else if ( substringRange.location != NSNotFound & substringRange.location != 0)
+//            {
+//                [currentAttributedString addAttribute:NSFontAttributeName value:fontForRangeOfSubstring range:substringRange];
+//                [arrayOfSecondList addObject:currentAttributedString];
+//            }
+//        }
+//    }
+//    
+//    
+//    [arryForFirstList addObjectsFromArray:arrayOfSecondList];
+//    if ([arryForFirstList count] != 0)
+//    {
+//        autoCompleteArray = arryForFirstList;
+//    } else
+//    {
+//        NSMutableAttributedString *noResultAttributedString =[[NSMutableAttributedString alloc] initWithString:@"No results found..."];
+//        autoCompleteArray = [@[noResultAttributedString] mutableCopy];
+//    }
+//
+    autoCompleteArray = [self.autoCompleteManager searchAutocompleteEntriesWithSubstring:substring];
     
     [self.autocompleteList reloadData];
     [_autocompleteList setContentOffset:(CGPointZero)];
     
     
 //Tableview height according to number of cells
-    int maxNumberOfCell;
+//    int maxNumberOfCell;
+//    
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+//    {
+//        if ([UIScreen mainScreen].bounds.size.height == 568)
+//            maxNumberOfCell = 6;
+//        else
+//            maxNumberOfCell = 5;
+//    } else  maxNumberOfCell = 7;
+//    
+//        CGFloat heigtOfTableView;
+//
+//        if (autoCompleteArray.count < maxNumberOfCell)
+//        {
+//            heigtOfTableView = _autocompleteList.rowHeight * autoCompleteArray.count;
+//            
+//        } else
+//        {
+//            heigtOfTableView = _autocompleteList.rowHeight * maxNumberOfCell;
+//        }
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        if ([UIScreen mainScreen].bounds.size.height == 568)
-            maxNumberOfCell = 6;
-        else
-            maxNumberOfCell = 5;
-    } else  maxNumberOfCell = 7;
     
-        CGFloat heigtOfTableView;
-
-        if (autoCompleteArray.count < maxNumberOfCell)
-        {
-            heigtOfTableView = _autocompleteList.rowHeight * autoCompleteArray.count;
-            
-        } else
-        {
-            heigtOfTableView = _autocompleteList.rowHeight * maxNumberOfCell;
-        }
-        
-        _autocompleteHeightConst.constant = heigtOfTableView;
+    _autocompleteHeightConst.constant = [self.autoCompleteManager heightOfTableForArrayCount:autoCompleteArray.count andRowHeight:self.autocompleteList.rowHeight];
     
 
 //    CGRect frameOfTableView = _autocompleteList.frame;
