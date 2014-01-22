@@ -19,6 +19,17 @@
     return self;
 }
 
++ (id)sharedInstance
+{
+    static DatabaseManager *sharedDatabaseManager = Nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedDatabaseManager = [[DatabaseManager alloc] init];
+    });
+    return sharedDatabaseManager;
+}
+
 - (NSArray *)keyWords
 {
     if (!_keyWords)

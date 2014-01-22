@@ -12,6 +12,7 @@
 		E424E2BB1883B6C700C40E49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E424E2BA1883B6C700C40E49 /* Images.xcassets */; };
 		E4341D1C186C0D6300995297 /* ParseVOTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4341D1B186C0D6300995297 /* ParseVOTD.m */; };
 		E4341D45186C50C500995297 /* searchButtonInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E4341D44186C50C500995297 /* searchButtonInverted.png */; };
+		E43D251F188F7C8800D207C9 /* SearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E43D251E188F7C8800D207C9 /* SearchManager.m */; };
 		E4477C491867EF2A0004799F /* SerialPublication.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4477C481867EF020004799F /* SerialPublication.ttf */; };
 		E4477CFC18685D130004799F /* 1.1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477CE518685D130004799F /* 1.1@2x.png */; };
 		E4477CFD18685D130004799F /* 1.2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4477CE618685D130004799F /* 1.2@2x.png */; };
@@ -118,6 +119,8 @@
 		E4341D1A186C0D6300995297 /* ParseVOTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseVOTD.h; sourceTree = "<group>"; };
 		E4341D1B186C0D6300995297 /* ParseVOTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseVOTD.m; sourceTree = "<group>"; };
 		E4341D44186C50C500995297 /* searchButtonInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonInverted.png; sourceTree = "<group>"; };
+		E43D251D188F7C8800D207C9 /* SearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchManager.h; sourceTree = "<group>"; };
+		E43D251E188F7C8800D207C9 /* SearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchManager.m; sourceTree = "<group>"; };
 		E4477C481867EF020004799F /* SerialPublication.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SerialPublication.ttf; sourceTree = "<group>"; };
 		E4477CE518685D130004799F /* 1.1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1.1@2x.png"; sourceTree = "<group>"; };
 		E4477CE618685D130004799F /* 1.2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1.2@2x.png"; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				E4CC3458185F115200B7FB1E /* Verse.m */,
 				E4341D1A186C0D6300995297 /* ParseVOTD.h */,
 				E4341D1B186C0D6300995297 /* ParseVOTD.m */,
+				E43D251D188F7C8800D207C9 /* SearchManager.h */,
+				E43D251E188F7C8800D207C9 /* SearchManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 				E4CC3450185ED27900B7FB1E /* AFURLConnectionOperation.m in Sources */,
 				E4CC344B185ED27900B7FB1E /* AFHTTPRequestOperation.m in Sources */,
 				E4CC344E185ED27900B7FB1E /* AFNetworkReachabilityManager.m in Sources */,
+				E43D251F188F7C8800D207C9 /* SearchManager.m in Sources */,
 				E4CC3453185ED27900B7FB1E /* AFURLSessionManager.m in Sources */,
 				E4D5D5D91861731E004DBE2E /* BackButton.m in Sources */,
 				E44AE371188D359D00B2DADF /* InfoViewController.m in Sources */,

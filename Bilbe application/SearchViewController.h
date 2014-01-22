@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Verse.h"
+#import "SearchManager.h"
+
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -17,7 +19,7 @@
 
 
 
-@interface SearchViewController : UIViewController < UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate >
+@interface SearchViewController : UIViewController < UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, SearchManagerDelegate >
 @property (weak, nonatomic) IBOutlet UITextField *textFieldForSearching;
 @property (weak, nonatomic) IBOutlet UITextView *VOTDTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;

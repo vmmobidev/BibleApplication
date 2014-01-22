@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) NSArray *keyWords;
 
++ (id)sharedInstance;
+
 - (NSArray *)getTheKeyWordsFromDatabase;
 @end

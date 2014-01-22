@@ -16,6 +16,7 @@
 #import "ParseVOTD.h"
 #import "DatabaseManager.h"
 #import "Flurry.h"
+
 #define URLForVOTD [NSURL URLWithString:@"http://labs.bible.org/api/?passage=votd&type=xml"]
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -31,6 +32,7 @@
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
 @property (nonatomic, strong) UIPopoverController *popoverViewController;
+@property (nonatomic, strong) SearchManager *searchManager;
 
 @end
 
@@ -188,11 +190,24 @@
     self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
 	[self.hostReachability startNotifier];
     
-    DatabaseManager *databaseManager = [[DatabaseManager alloc] init];
-    arrayOfKeyWords = [databaseManager getTheKeyWordsFromDatabase];
+//    DatabaseManager *databaseManager = [[DatabaseManager alloc] init];
+//    arrayOfKeyWords = [databaseManager getTheKeyWordsFromDatabase];
+    
+    arrayOfKeyWords = [[DatabaseManager sharedInstance] getTheKeyWordsFromDatabase];
     NSLog(@"array of keywords = %i", arrayOfKeyWords.count);
     
     autoCompleteArray = [[NSMutableArray alloc] init];
+    
+}
+
+- (SearchManager *)searchManager
+{
+    if(!_searchManager)
+    {
+        _searchManager = [[SearchManager alloc] initWithArray:arrayOfKeyWords];
+        _searchManager.delegate = self;
+    }
+    return _searchManager;
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification
@@ -346,65 +361,96 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
-//remove special characters
-    if (!stringToBeSent)
+//    NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
+////remove special characters
+//    if (!stringToBeSent)
+//    {
+//        stringToBeSent = [[NSString alloc] init];
+//    }
+//    
+//    NSMutableCharacterSet *charactherSet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
+//    [charactherSet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
+//    charactherSet = [[charactherSet invertedSet] mutableCopy];
+//    
+//    stringToBeSent = [[_textFieldForSearching.text componentsSeparatedByCharactersInSet:charactherSet] componentsJoinedByString:@""];
+//    
+//    
+//    if ([stringForTrimming stringByTrimmingCharactersInSet:([NSCharacterSet whitespaceAndNewlineCharacterSet])].length == 0)
+//    {
+//        _textFieldForSearching.textColor = [UIColor redColor];
+//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
+//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+//            _textFieldForSearching.text =@"  Please ask somethig here...";
+//        } completion:Nil];
+//        return NO;
+//    }else if ([_textFieldForSearching.text isEqualToString:@"  Please ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
+//    {
+//        return NO;
+//    }else if (stringToBeSent.length == 0)
+//    {
+//        _textFieldForSearching.textColor = [UIColor redColor];
+//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
+//        
+//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionAllowAnimatedContent) animations:^{
+//            _textFieldForSearching.text =@"  Please ask something meaningful...";
+//            
+//        } completion:Nil];
+//
+//        return NO;
+//    }
+//    BOOL occuranceOfStringInArray = NO;
+//    for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
+//    {
+//        NSString *currentString = [attributedString string];
+//        
+//        if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
+//        {
+//            occuranceOfStringInArray = YES;
+//            break;
+//        }
+//    }
+//    
+//    if (!occuranceOfStringInArray)
+//    {
+//        [self showWarningMessageWithAutoCompleteList:YES];
+//        return NO;
+//    }
+//    
+//    [Flurry logEvent:@"Sucessful SearchButtonPress"];
+//
+//    return YES;
+    
+    
+    NSDictionary *dictionaryOfResults = [self.searchManager searchResultsForString:_textFieldForSearching.text];
+    
+    stringToBeSent = dictionaryOfResults[STRINGTOBESENT];
+    
+    if ([dictionaryOfResults[RETURNVALUEKEY] boolValue])
     {
-        stringToBeSent = [[NSString alloc] init];
+        [Flurry logEvent:@"Sucessful SearchButtonPress"];
     }
     
-    NSMutableCharacterSet *charactherSet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
-    [charactherSet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
-    charactherSet = [[charactherSet invertedSet] mutableCopy];
-    
-    stringToBeSent = [[_textFieldForSearching.text componentsSeparatedByCharactersInSet:charactherSet] componentsJoinedByString:@""];
-    
-    
-    if ([stringForTrimming stringByTrimmingCharactersInSet:([NSCharacterSet whitespaceAndNewlineCharacterSet])].length == 0)
+    return [dictionaryOfResults[RETURNVALUEKEY] boolValue];
+}
+
+-(void)managerResultString:(NSString *)result returnValue:(BOOL)returnValue andOccuranceOfString:(BOOL)occurance
+{
+    if (!returnValue)
     {
-        _textFieldForSearching.textColor = [UIColor redColor];
-        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-            _textFieldForSearching.text =@"  Please, ask somethig here...";
-        } completion:Nil];
-        return NO;
-    }else if ([_textFieldForSearching.text isEqualToString:@"  Please, ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
-    {
-        return NO;
-    }else if (stringToBeSent.length == 0)
-    {
-        _textFieldForSearching.textColor = [UIColor redColor];
-        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionAllowAnimatedContent) animations:^{
-            _textFieldForSearching.text =@"  Please ask something meaningful...";
-            
-        } completion:Nil];
-//        _textFieldForSearching.text =@"  Please ask something meaningful...";
-        
-        return NO;
-    }
-    BOOL occuranceOfStringInArray = NO;
-    for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
-    {
-        NSString *currentString = [attributedString string];
-        
-        if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
+        if (occurance)
         {
-            occuranceOfStringInArray = YES;
-            break;
+            _textFieldForSearching.textColor = [UIColor redColor];
+            _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
+            
+            [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionAllowAnimatedContent) animations:^{
+                _textFieldForSearching.text =result;
+            } completion:Nil];
+
+        }else
+        {
+            [self showWarningMessageWithAutoCompleteList:YES];
         }
     }
-    
-    if (!occuranceOfStringInArray)
-    {
-        [self showWarningMessageWithAutoCompleteList:YES];
-        return NO;
-    }
-    
-    [Flurry logEvent:@"Sucessful SearchButtonPress"];
-
-    return YES;
 }
 
 - (IBAction)returnKeyPressed:(UITextField *)sender
@@ -413,62 +459,73 @@
     
     [Flurry logEvent:@"Enter button pressed"];
     
-    NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
+//    NSMutableString *stringForTrimming = [_textFieldForSearching.text mutableCopy];
+//    
+//    if (!stringToBeSent)
+//    {
+//        stringToBeSent = [[NSString alloc] init];
+//    }
+//    
+//    NSMutableCharacterSet *charactherSet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
+//    [charactherSet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
+//    charactherSet = [[charactherSet invertedSet] mutableCopy];
+//    
+//    stringToBeSent = [[_textFieldForSearching.text componentsSeparatedByCharactersInSet:charactherSet] componentsJoinedByString:@""];
+//
+//
+//    if ([stringForTrimming stringByTrimmingCharactersInSet:([NSCharacterSet whitespaceAndNewlineCharacterSet])].length == 0)
+//    {
+//        _textFieldForSearching.textColor = [UIColor redColor];
+//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
+//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+//            _textFieldForSearching.text =@"  Please ask somethig here...";
+//            _autocompleteList.hidden = YES;
+//        } completion:Nil];
+//
+//    }else if (stringToBeSent.length == 0)
+//    {
+//        _textFieldForSearching.textColor = [UIColor redColor];
+//        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
+//        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
+//            _textFieldForSearching.text =@"  Please ask something meaningful...";
+//            
+//        } completion:Nil];
+//    }else
+//    {
+//        BOOL occuranceOfStringInArray = NO;
+//        for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
+//        {
+//            NSString *currentString = [attributedString string];
+//            
+//            if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
+//            {
+//                occuranceOfStringInArray = YES;
+//                break;
+//            }
+//        }
+//        
+//        if (!occuranceOfStringInArray)
+//        {
+//            [self showWarningMessageWithAutoCompleteList:YES];
+//        } else
+//        {
+//            
+//            [Flurry logEvent:@"Sucessful enter button press"];
+//            _autocompleteList.hidden = YES;
+//            [self performSegueWithIdentifier:@"searchID" sender:self];
+//
+//        }
+//    }
     
-    if (!stringToBeSent)
-    {
-        stringToBeSent = [[NSString alloc] init];
-    }
+    NSDictionary *dictionaryOfResults = [self.searchManager searchResultsForString:_textFieldForSearching.text];
     
-    NSMutableCharacterSet *charactherSet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
-    [charactherSet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
-    charactherSet = [[charactherSet invertedSet] mutableCopy];
+    stringToBeSent = dictionaryOfResults[STRINGTOBESENT];
     
-    stringToBeSent = [[_textFieldForSearching.text componentsSeparatedByCharactersInSet:charactherSet] componentsJoinedByString:@""];
-
-
-    if ([stringForTrimming stringByTrimmingCharactersInSet:([NSCharacterSet whitespaceAndNewlineCharacterSet])].length == 0)
+    if ([dictionaryOfResults[RETURNVALUEKEY] boolValue])
     {
-        _textFieldForSearching.textColor = [UIColor redColor];
-        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-            _textFieldForSearching.text =@"  Please, ask somethig here...";
-            _autocompleteList.hidden = YES;
-        } completion:Nil];
-
-    }else if (stringToBeSent.length == 0)
-    {
-        _textFieldForSearching.textColor = [UIColor redColor];
-        _textFieldForSearching.font = [UIFont fontWithName:@"JamesFajardo" size:27];
-        [UIView transitionWithView:self.textFieldForSearching duration:.6 options:(UIViewAnimationOptionTransitionCrossDissolve) animations:^{
-            _textFieldForSearching.text =@"  Please ask something meaningful...";
-            
-        } completion:Nil];
-    }else
-    {
-        BOOL occuranceOfStringInArray = NO;
-        for (NSMutableAttributedString *attributedString in arrayOfKeyWords)
-        {
-            NSString *currentString = [attributedString string];
-            
-            if ([currentString compare:stringToBeSent options:NSCaseInsensitiveSearch] == NSOrderedSame)
-            {
-                occuranceOfStringInArray = YES;
-                break;
-            }
-        }
-        
-        if (!occuranceOfStringInArray)
-        {
-            [self showWarningMessageWithAutoCompleteList:YES];
-        } else
-        {
-            
-            [Flurry logEvent:@"Sucessful enter button press"];
-            _autocompleteList.hidden = YES;
-            [self performSegueWithIdentifier:@"searchID" sender:self];
-
-        }
+        [Flurry logEvent:@"Sucessful enter button press"];
+        _autocompleteList.hidden = YES;
+        [self performSegueWithIdentifier:@"searchID" sender:self];
     }
 }
 
@@ -613,7 +670,7 @@
 #pragma TExtfield delegte methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if ([_textFieldForSearching.text isEqualToString:@"  Please, ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
+    if ([_textFieldForSearching.text isEqualToString:@"  Please ask somethig here..."] || [_textFieldForSearching.text isEqualToString:@"  Please ask something meaningful..."])
     {
         _textFieldForSearching.textColor = [UIColor blackColor];
         _textFieldForSearching.font = fontForTxtFldWhileEditing;
